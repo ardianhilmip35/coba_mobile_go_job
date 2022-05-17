@@ -2,15 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: "GO JOB",
-    home: ViewProfil(),
-  ));
-}
-
-int _selectedIndex = 0;
-
 class ViewProfil extends StatefulWidget {
   const ViewProfil({Key? key}) : super(key: key);
 
@@ -19,12 +10,6 @@ class ViewProfil extends StatefulWidget {
 }
 
 class _ViewProfilState extends State<ViewProfil> {
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,43 +28,6 @@ class _ViewProfilState extends State<ViewProfil> {
             Navigator.pop(context);
           },
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        //untuk bottom navigation bar
-        elevation: 30,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedIconTheme: IconThemeData(color: primarycolor, size: 40),
-        iconSize: 40,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            label: 'Cari',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bookmark,
-            ),
-            label: 'Simpan',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-            ),
-            label: 'Profil',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
       ),
       body: Column(
         children: <Widget>[

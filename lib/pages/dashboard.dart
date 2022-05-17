@@ -2,29 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: "GO JOB",
-    home: SimpanLowongan(),
-  ));
-}
-
-int _selectedIndex = 0;
-
-class SimpanLowongan extends StatefulWidget {
-  const SimpanLowongan({Key? key}) : super(key: key);
+class Dashboard extends StatefulWidget {
+  const Dashboard({Key? key}) : super(key: key);
 
   @override
-  State<SimpanLowongan> createState() => _SimpanLowonganState();
+  State<Dashboard> createState() => _DashboardState();
 }
 
-class _SimpanLowonganState extends State<SimpanLowongan> {
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,43 +21,6 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
           ),
           backgroundColor: primarycolor,
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          //untuk bottom navigation bar
-          elevation: 30,
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          selectedIconTheme: IconThemeData(color: primarycolor, size: 40),
-          iconSize: 40,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-              ),
-              label: 'Cari',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.bookmark,
-              ),
-              label: 'Simpan',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-              ),
-              label: 'Profil',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-        ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -81,11 +29,10 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
                 color: secondarycolor,
                 width: double.infinity,
                 child: Row(
-                  
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                   Container(
-                    child: Row(
-                      children: <Widget>[
+                    child: Row(children: <Widget>[
                       Text(
                         "Galuh Apriliano",
                         textAlign: TextAlign.end,
@@ -207,8 +154,6 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
                       ),
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: primarycolor)),
                       width: double.infinity,
                       padding: EdgeInsets.all(10),
                       child: Row(

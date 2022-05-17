@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-int _selectedIndex = 0;
+
 
 class Profil extends StatefulWidget {
   const Profil({Key? key}) : super(key: key);
@@ -12,11 +12,7 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -37,43 +33,7 @@ class _ProfilState extends State<Profil> {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        //untuk bottom navigation bar
-        elevation: 30,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedIconTheme: IconThemeData(color: primarycolor, size: 40),
-        iconSize: 40,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            label: 'Cari',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bookmark,
-            ),
-            label: 'Simpan',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-            ),
-            label: 'Profil',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
+     
       body: Container(
         child: Column(
           children: <Widget>[
