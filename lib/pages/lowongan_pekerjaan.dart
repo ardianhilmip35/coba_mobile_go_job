@@ -155,7 +155,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                               ),
                             ),
                             Container( padding: EdgeInsets.only(right: 1),
-                                child: Column(
+                              child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
                                 IconButton(
