@@ -32,9 +32,6 @@ class _ViewProfilState extends State<ViewProfil> {
       body: Column(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(
-              top: 80,
-            ),
             height: 220,
             width: double.infinity,
             decoration: BoxDecoration(

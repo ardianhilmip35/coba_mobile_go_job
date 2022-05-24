@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
 class Profil extends StatefulWidget {
   const Profil({Key? key}) : super(key: key);
 
@@ -12,8 +10,6 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,13 +29,12 @@ class _ProfilState extends State<Profil> {
           },
         ),
       ),
-     
       body: Container(
         child: Column(
           children: <Widget>[
             Container(
               //Container Profil
-              margin: EdgeInsets.only(top: 80),
+
               height: 180,
               decoration: BoxDecoration(
                 color: primarycolor,
