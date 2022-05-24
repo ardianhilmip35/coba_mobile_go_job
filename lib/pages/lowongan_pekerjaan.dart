@@ -64,7 +64,8 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
           ),
         ],
       ),
-      body : Padding(padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
+      body : SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
           child: Column(
             children: [
               TextFormField(
