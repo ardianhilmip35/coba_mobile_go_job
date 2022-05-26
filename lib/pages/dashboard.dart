@@ -167,6 +167,7 @@ class _DashboardState extends State<Dashboard> {
                                   color: Colors.black),
                             ),
                           ),
+                          Padding(padding: EdgeInsets.only(right: 50)),
                           Container(
                             child: Text(
                               "Lihat Semua",
