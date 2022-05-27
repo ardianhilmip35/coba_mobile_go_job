@@ -30,7 +30,8 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 50.0, left: 8.8, right: 8.8),
+                padding:
+                    const EdgeInsets.only(top: 50.0, left: 8.8, right: 8.8),
                 child: TextFormField(
                   //untuk input email
                   decoration: new InputDecoration(
@@ -48,7 +49,8 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 25.0, left: 8.8, right: 8.8),
+                padding:
+                    const EdgeInsets.only(top: 25.0, left: 8.8, right: 8.8),
                 child: TextFormField(
                   //untuk textfield password
                   obscureText: true,
@@ -66,67 +68,44 @@ class _LoginState extends State<Login> {
                   },
                 ),
               ),
-              
               Padding(
                 padding: EdgeInsets.only(top: 30.0),
               ),
-              MaterialButton(
-                //untuk button register
-                height: 50.0,
-                minWidth: 500.0,
-                color: primarycolor,
-                textColor: Colors.white,
-                child: new Text(
-                  "Login",
-                  style: TextStyle(
-                    fontSize: 25.0,
+             SizedBox(
+               width: 180,
+               child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: primarycolor,
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {}
+                    },
+                    child: const Text('Login'),
                   ),
-                ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {}
-                },
-                splashColor: Colors.transparent,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-                child: new Text(
-                  //untuk text or
-                  "Or",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                  ),
-                ),
-              ),
-              MaterialButton(
-                //untuk button sign up with google
-                height: 50.0,
-                minWidth: 500.0,
-                color: primarycolor,
-                textColor: Colors.white,
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Icon(Icons.login),
-                  SizedBox(width: 10),
-                  Text(
-                    "Sign Up With Google",
+             ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  child: new Text(
+                    //untuk text or
+                    "Or",
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 15.0,
                     ),
                   ),
-                ]),
-                onPressed: () {},
-                splashColor: Colors.transparent,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5.0, bottom: 20.0),
-                child: new Text(
-                  //untuk text
-                  "Very easy and fast. We will not upload anything without your permission",
-                  style: TextStyle(
-                    fontSize: 15.0,
-                  ),
                 ),
-              ),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    primary: primarycolor,
+                  ),
+                  onPressed: () {},
+                  icon: Icon(
+                    // <-- Icon
+                    Icons.login,
+                    size: 24.0,
+                  ),
+                  label: Text('Sign In With Google'),
+                ),
+             
               Padding(
                 padding: EdgeInsets.only(top: 15.0),
                 child: Row(
@@ -134,9 +113,9 @@ class _LoginState extends State<Login> {
                   children: [
                     Text(
                       //untuk text already have an account
-                      "Don't have an account",
+                      "Don't have an account?",
                       style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: 15.0,
                       ),
                     ),
                     SizedBox(width: 12),
@@ -144,7 +123,7 @@ class _LoginState extends State<Login> {
                       //untuk text sign in
                       "Register!",
                       style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: 15.0,
                         color: primarycolor,
                       ),
                     ),
