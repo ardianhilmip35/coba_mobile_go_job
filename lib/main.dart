@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translations: LocaleString(),
-      locale: Locale('en', 'US'),
+      locale: Locale('id', 'ID'),
       home: MyBottomBar(),
     );
   }

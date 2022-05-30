@@ -122,7 +122,7 @@ class _RegisterState extends State<Register> {
                   padding: EdgeInsets.only(top: 25.0),
                 ),
                 SizedBox(
-                  width: 180,
+                  width: 210,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: primarycolor,
@@ -130,8 +130,8 @@ class _RegisterState extends State<Register> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {}
                     },
-                    child: const Text(
-                      'Register',
+                    child: Text(
+                      'daftar'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -146,19 +146,22 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                 ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    primary: primarycolor,
-                  ),
-                  onPressed: () {},
-                  icon: Icon(
-                    // <-- Icon
-                    Icons.login,
-                    size: 24.0,
-                  ),
-                  label: Text(
-                    'daftargoogle'.tr,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                SizedBox(
+                  width: 210,
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      primary: primarycolor,
+                    ),
+                    onPressed: () {},
+                    icon: Icon(
+                      // <-- Icon
+                      Icons.login,
+                      size: 24.0,
+                    ),
+                    label: Text(
+                      'daftargoogle'.tr,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 Padding(

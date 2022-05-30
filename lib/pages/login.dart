@@ -83,7 +83,7 @@ class _LoginState extends State<Login> {
                   padding: EdgeInsets.only(top: 40.0),
                 ),
                 SizedBox(
-                  width: 180,
+                  width: 210,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: primarycolor,
@@ -107,18 +107,21 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    primary: primarycolor,
-                  ),
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.login,
-                    size: 24.0,
-                  ),
-                  label: Text(
-                    'masukgoogle'.tr,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                SizedBox(
+                  width: 210,
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      primary: primarycolor,
+                    ),
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.login,
+                      size: 24.0,
+                    ),
+                    label: Text(
+                      'masukgoogle'.tr,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 Padding(
