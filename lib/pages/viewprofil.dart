@@ -29,238 +29,214 @@ class _ViewProfilState extends State<ViewProfil> {
           },
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: 220,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                border: Border.all(color: primarycolor, width: 2)),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      //Container Foto Profil
-                      margin: EdgeInsets.only(top: 20, left: 210),
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: primarycolor, width: 4),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        //Icon Foto Profil
-                        Icons.person,
-                        color: primarycolor,
-                        size: 80,
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 160)),
-                    IconButton(
-                      alignment: Alignment.topRight,
-                      onPressed: () {},
-                      icon: Icon(Icons.edit),
-                      color: primarycolor,
-                    ),
-                  ],
-                ),
-                Container(
-                  //Container Nama Profil
-                  margin: EdgeInsets.only(top: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Galuh Apriliano",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Colors.black),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "0882153572313",
-                            style: GoogleFonts.poppins(
-                                fontSize: 18, color: Colors.grey),
-                          ),
-                          Padding(padding: EdgeInsets.only(left: 5)),
-                          Text(
-                            "|",
-                            style: GoogleFonts.poppins(
-                                fontSize: 18, color: Colors.grey),
-                          ),
-                          Padding(padding: EdgeInsets.only(right: 5)),
-                          Text(
-                            "galuhapriliano@gmail.com",
-                            style: GoogleFonts.poppins(
-                                fontSize: 18, color: Colors.grey),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: IconButton(
+                alignment: Alignment.topRight,
+                onPressed: () {},
+                icon: Icon(Icons.edit),
+                color: primarycolor,
+              ),
             ),
-          ),
-          Container(
-            height: 200,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                border: Border.all(color: primarycolor, width: 2)),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Row(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.business_center),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Pengalaman Kerja",
-                            style: GoogleFonts.poppins(fontSize: 25),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 210)),
-                    IconButton(
-                      alignment: Alignment.topRight,
-                      onPressed: () {},
-                      icon: Icon(Icons.edit),
-                      color: primarycolor,
-                    ),
-                  ],
-                ),
-                Padding(padding: EdgeInsets.only(top: 100)),
-                Text(
-                  "Tambahkan Pengalaman Kerja",
-                  textAlign: TextAlign.end,
-                  style: GoogleFonts.poppins(fontSize: 20, color: primarycolor),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: 180,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                border: Border.all(color: primarycolor, width: 2)),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Row(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.school),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Pendidikan",
-                            style: GoogleFonts.poppins(fontSize: 25),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 240)),
-                    Text(
-                      "Tampilkan",
-                      textAlign: TextAlign.end,
-                      style:
-                          GoogleFonts.poppins(fontSize: 20, color: Colors.grey),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Row(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Politeknik Negeri Jember",
-                            style: GoogleFonts.poppins(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 220)),
-                    IconButton(
-                      alignment: Alignment.topRight,
-                      onPressed: () {},
-                      icon: Icon(Icons.edit),
-                      color: primarycolor,
-                    ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Row(
+            Container(
+              height: 170,
+              width: double.infinity,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Padding(padding: EdgeInsets.only(left: 10)),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Teknik Informatika",
-                            style: GoogleFonts.poppins(fontSize: 18),
+                        Container(
+                          //Container Foto Profil
+                          width: 80,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: primarycolor, width: 4),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            //Icon Foto Profil
+                            Icons.person,
+                            color: primarycolor,
+                            size: 60,
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  Container(
+                    //Container Nama Profil
+                    margin: EdgeInsets.only(top: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Galuh Apriliano",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.black),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "0882153572313",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15, color: Colors.grey),
+                            ),
+                            Padding(padding: EdgeInsets.only(left: 5)),
+                            Text(
+                              "|",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15, color: Colors.grey),
+                            ),
+                            Padding(padding: EdgeInsets.only(right: 5)),
+                            Text(
+                              "galuhapriliano@gmail.com",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15, color: Colors.grey),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Container(
-            height: 150,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                border: Border.all(color: primarycolor, width: 2)),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Row(
+            Container(
+              height: 170,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  border: Border.all(color: primarycolor)),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          children: <Widget>[
+                            Padding(padding: EdgeInsets.only(left: 10)),
+                            Icon(Icons.business_center),
+                            Padding(padding: EdgeInsets.only(left: 10)),
+                            Text(
+                              "Pengalaman Kerja",
+                              style: GoogleFonts.poppins(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 100)),
+                  Text(
+                    "Tambahkan Pengalaman Kerja",
+                    textAlign: TextAlign.end,
+                    style:
+                        GoogleFonts.poppins(fontSize: 15, color: primarycolor),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              height: 180,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  border: Border.all(color: primarycolor)),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          children: <Widget>[
+                            Padding(padding: EdgeInsets.only(left: 10)),
+                            Icon(Icons.school),
+                            Padding(padding: EdgeInsets.only(left: 10)),
+                            Text(
+                              "Pendidikan",
+                              style: GoogleFonts.poppins(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          children: <Widget>[
+                            Padding(padding: EdgeInsets.only(left: 10)),
+                            Text(
+                              "Politeknik Negeri Jember",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Row(
                         children: <Widget>[
                           Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.emoji_objects),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Keterampilan",
-                            style: GoogleFonts.poppins(fontSize: 25),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "Teknik Informatika",
+                              style: GoogleFonts.poppins(fontSize: 15),
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 270)),
-                    IconButton(
-                      alignment: Alignment.topRight,
-                      onPressed: () {},
-                      icon: Icon(Icons.edit),
-                      color: primarycolor,
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
-          )
-        ],
+            Container(
+              height: 150,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  border: Border.all(color: primarycolor)),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          children: <Widget>[
+                            Padding(padding: EdgeInsets.only(left: 10)),
+                            Icon(Icons.emoji_objects),
+                            Padding(padding: EdgeInsets.only(left: 10)),
+                            Text(
+                              "Keterampilan",
+                              style: GoogleFonts.poppins(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

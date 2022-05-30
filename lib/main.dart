@@ -36,7 +36,7 @@ class MyBottomBar extends StatefulWidget {
 class _MyBottomBarState extends State<MyBottomBar> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    Login(),
+    ViewProfil(),
     Register(),
     Dashboard(),
     Profil(),
@@ -60,8 +60,8 @@ class _MyBottomBarState extends State<MyBottomBar> {
         unselectedItemColor: Colors.grey,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedIconTheme: IconThemeData(color: primarycolor, size: 40),
-        iconSize: 40,
+        selectedIconTheme: IconThemeData(color: primarycolor, size: 30),
+        iconSize: 30,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
