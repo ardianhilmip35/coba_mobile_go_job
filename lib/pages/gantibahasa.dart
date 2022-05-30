@@ -19,7 +19,7 @@ class GantiBahasa extends StatelessWidget {
         context: context,
         builder: (builder) {
           return AlertDialog(
-            title: Text('Choose Your Language'),
+            title: Text('gantibahasamu'.tr),
             content: Container(
               width: double.maxFinite,
               child: ListView.separated(

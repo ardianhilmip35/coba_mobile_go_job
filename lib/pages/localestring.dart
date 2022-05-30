@@ -50,6 +50,7 @@ class LocaleString extends Translations {
           'lamarsekarang': 'Apply Now',
           'lihatprofil': 'View Profile',
           'gantibahasa': 'Change Language',
+          'gantibahasamu': 'Choose Your Language',
         },
         'id_ID': {
           'kelola': 'Kelola Profilmu',
@@ -97,7 +98,7 @@ class LocaleString extends Translations {
           'lamarsekarang': 'Lamar Sekarang',
           'lihatprofil': 'Lihat Profil',
           'gantibahasa': 'Ganti Bahasa',
-          
+          'gantibahasamu': 'Ganti Bahasamu',
         }
       };
 }
