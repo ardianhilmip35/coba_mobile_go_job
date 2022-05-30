@@ -27,7 +27,7 @@ class _ProfilState extends State<Profil> {
             Container(
               //Container Profil
 
-              height: 160,
+              height: 150,
               decoration: BoxDecoration(
                 color: primarycolor,
                 border: Border.all(color: Colors.black, width: 2),

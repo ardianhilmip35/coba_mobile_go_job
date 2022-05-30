@@ -55,7 +55,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
       body: _children[_currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
-        //untuk bottom navigation bar
+        //untuk bottom navigation barl
         elevation: 30,
         unselectedItemColor: Colors.grey,
         showSelectedLabels: false,
