@@ -52,6 +52,7 @@ class LocaleString extends Translations {
           'gantibahasa': 'Change Language',
           'gantibahasamu': 'Choose Your Language',
         },
+        
         'id_ID': {
           'kelola': 'Kelola Profilmu',
           'riwayat': 'Riwayat Lamaran',

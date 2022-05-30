@@ -35,7 +35,7 @@ class _ProfilState extends State<Profil> {
               height: 150,
               decoration: BoxDecoration(
                 color: primarycolor,
-                border: Border.all(color: Colors.black, width: 2),
+                border: Border.all(color: Colors.black, width: 0.5),
               ),
               child: Row(
                 children: <Widget>[
