@@ -13,11 +13,18 @@ class _RegisterState extends State<Register> {
   double nilaiSlider = 1;
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Register",
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
+        ),
+        centerTitle: true,
+        backgroundColor: primarycolor,
+      ),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
           child: Container(
-            margin: const EdgeInsets.only(top: 20),
             padding: EdgeInsets.all(20.0),
             child: Column(
               children: [
@@ -111,7 +118,7 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20.0),
+                  padding: EdgeInsets.only(top: 25.0),
                 ),
                 SizedBox(
                   width: 180,
@@ -122,7 +129,10 @@ class _RegisterState extends State<Register> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {}
                     },
-                    child: const Text('Register'),
+                    child: const Text(
+                      'Register',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 Padding(
@@ -145,10 +155,13 @@ class _RegisterState extends State<Register> {
                     Icons.login,
                     size: 24.0,
                   ),
-                  label: Text('Sign Up With Google'),
+                  label: Text(
+                    'Sign Up With Google',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20.0),
+                  padding: EdgeInsets.only(top: 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

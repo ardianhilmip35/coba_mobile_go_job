@@ -30,6 +30,7 @@ class MyBottomBar extends StatefulWidget {
 
   @override
   State<MyBottomBar> createState() => _MyBottomBarState();
+  
 }
 
 class _MyBottomBarState extends State<MyBottomBar> {
@@ -37,7 +38,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
   final List<Widget> _children = [
     Login(),
     Register(),
-    SimpanLowongan(),
+    Dashboard(),
     Profil(),
     
   ];

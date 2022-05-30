@@ -13,10 +13,18 @@ class _LoginState extends State<Login> {
   double nilaiSlider = 1;
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Login",
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
+        ),
+        centerTitle: true,
+        backgroundColor: primarycolor,
+      ),
       body: Form(
         key: _formKey,
         child: Container(
-          margin: const EdgeInsets.only(top: 30.0),
+          margin: const EdgeInsets.only(top: 10.0),
           padding: EdgeInsets.all(20.0),
           child: Column(
             children: [
@@ -69,45 +77,49 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 30.0),
+                padding: EdgeInsets.only(top: 40.0),
               ),
-             SizedBox(
-               width: 180,
-               child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: primarycolor,
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
-                    },
-                    child: const Text('Login'),
-                  ),
-             ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                  child: new Text(
-                    //untuk text or
-                    "Or",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                    ),
-                  ),
-                ),
-                ElevatedButton.icon(
+              SizedBox(
+                width: 180,
+                child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: primarycolor,
                   ),
-                  onPressed: () {},
-                  icon: Icon(
-                    // <-- Icon
-                    Icons.login,
-                    size: 24.0,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                  },
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  label: Text('Sign In With Google'),
                 ),
-             
+              ),
               Padding(
-                padding: EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child: new Text(
+                  //untuk text or
+                  "Or",
+                  style: TextStyle(
+                    fontSize: 15.0,
+                  ),
+                ),
+              ),
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: primarycolor,
+                ),
+                onPressed: () {},
+                icon: Icon(
+                  Icons.login,
+                  size: 24.0,
+                ),
+                label: Text(
+                  'Sign In With Google',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

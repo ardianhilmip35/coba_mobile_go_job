@@ -10,6 +10,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  Color _iconColor = Colors.grey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,37 +30,38 @@ class _DashboardState extends State<Dashboard> {
                 color: secondarycolor,
                 width: double.infinity,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                  Container(
-                    child: Row(children: <Widget>[
-                      Text(
-                        "Galuh Apriliano",
-                        textAlign: TextAlign.end,
-                        style: GoogleFonts.poppins(
-                            fontSize: 25, color: Colors.black),
-                      ),
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
                       Container(
-                        //Container Foto Profil
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          //Icon Foto Profil
-                          Icons.person,
-                          color: primarycolor,
-                          size: 30,
-                        ),
+                        child: Row(children: <Widget>[
+                          Text(
+                            "Galuh Apriliano",
+                            textAlign: TextAlign.end,
+                            style: GoogleFonts.poppins(
+                                fontSize: 20, color: Colors.black),
+                          ),
+                          Padding(padding: EdgeInsets.only(left: 10)),
+                          Container(
+                            //Container Foto Profil
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              //Icon Foto Profil
+                              Icons.person,
+                              color: primarycolor,
+                              size: 30,
+                            ),
+                          ),
+                        ]),
                       ),
                     ]),
-                  ),
-                ]),
               ),
               Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(5),
                 color: secondarycolor,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,17 +78,22 @@ class _DashboardState extends State<Dashboard> {
                               "Informasi",
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 20,
                                   color: Colors.black),
                             ),
+                            Padding(padding: EdgeInsets.only(bottom: 5)),
                             Text(
                               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
                               style: GoogleFonts.poppins(
-                                  fontSize: 20, color: Colors.black),
+                                  fontSize: 15, color: Colors.black),
                             ),
+                            Padding(padding: EdgeInsets.only(bottom: 5)),
                             ElevatedButton(
                               onPressed: () {},
-                              child: Text('More Info'),
+                              child: Text(
+                                'More Info',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                               style: ElevatedButton.styleFrom(
                                   primary: primarycolor,
                                   shape: StadiumBorder()),
@@ -103,7 +110,7 @@ class _DashboardState extends State<Dashboard> {
                             "Cari Lowongan",
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 25,
+                                fontSize: 20,
                                 color: Colors.black),
                           ),
                           Container(
@@ -120,14 +127,14 @@ class _DashboardState extends State<Dashboard> {
                                 Padding(padding: EdgeInsets.only(left: 5)),
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width / 2.2,
+                                      MediaQuery.of(context).size.width / 2.3,
                                   height: 300,
                                   child: Column(
                                     children: <Widget>[
                                       Container(
                                         width:
                                             MediaQuery.of(context).size.width /
-                                                2.2,
+                                                2.3,
                                         height: 145,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
@@ -163,17 +170,19 @@ class _DashboardState extends State<Dashboard> {
                               "List Pekerjaan",
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 20,
                                   color: Colors.black),
                             ),
                           ),
-                          Padding(padding: EdgeInsets.only(right: 50)),
+                          SizedBox(
+                            width: 120,
+                          ),
                           Container(
                             child: Text(
                               "Lihat Semua",
                               textAlign: TextAlign.end,
                               style: GoogleFonts.poppins(
-                                  fontSize: 20, color: Colors.grey),
+                                  fontSize: 15, color: Colors.grey),
                             ),
                           ),
                         ],
@@ -182,182 +191,102 @@ class _DashboardState extends State<Dashboard> {
                     Column(
                       children: <Widget>[
                         Container(
+                          width: double.infinity,
                           margin: EdgeInsets.only(left: 10, right: 10),
+                          padding: EdgeInsets.only(left: 10, right: 10, top: 5),
                           height: 120,
                           decoration: BoxDecoration(
                             color: Colors.white,
                           ),
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      width: 55,
-                                      height: 55,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey,
-                                        border: Border.all(
-                                            color: Colors.white, width: 4),
-                                        shape: BoxShape.circle,
+                          child: Container(
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                        width: 55,
+                                        height: 55,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey,
+                                          border: Border.all(
+                                              color: Colors.white, width: 4),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Icon(
+                                          Icons.business_center,
+                                          color: Colors.black,
+                                          size: 40,
+                                        ),
                                       ),
-                                      child: Icon(
-                                        Icons.business_center,
-                                        color: Colors.black,
-                                        size: 40,
+                                      SizedBox(
+                                        width: 15,
                                       ),
-                                    ),
-                                    Padding(padding: EdgeInsets.only(top: 2)),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text('Lihat'),
-                                      style: ElevatedButton.styleFrom(
-                                          primary: primarycolor,
-                                          shape: StadiumBorder()),
-                                    )
-                                  ],
+                                      Container(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              "Text Job",
+                                              style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
+                                                  color: Colors.black),
+                                            ),
+                                            Text(
+                                              "Text Job",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 120,
+                                      ),
+                                      IconButton(
+                                          iconSize: 45,
+                                          color: _iconColor,
+                                          onPressed: () {
+                                            setState(() {
+                                              if (_iconColor == Colors.grey) {
+                                                _iconColor = primarycolor;
+                                              } else {
+                                                _iconColor = Colors.grey;
+                                              }
+                                            });
+                                          },
+                                          icon: Icon(Icons.bookmark)),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 20),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "Text Job",
-                                      style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 24,
-                                          color: Colors.black),
-                                    ),
-                                    Text(
-                                      "Text Job",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 17, color: Colors.black),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text('Lihat'),
-                                      style: ElevatedButton.styleFrom(
-                                          primary: primarycolor,
-                                          shape: StadiumBorder()),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                        iconSize: 45,
-                                        color: primarycolor,
+                                Container(
+                                  child: Row(
+                                    children: <Widget>[
+                                      ElevatedButton(
                                         onPressed: () {},
-                                        icon: Icon(Icons.bookmark)),
-                                    Padding(padding: EdgeInsets.only(top: 6)),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text('Apply'),
-                                      style: ElevatedButton.styleFrom(
-                                          primary: primarycolor,
-                                          shape: StadiumBorder()),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(padding: EdgeInsets.only(top: 20)),
-                        Container(
-                          margin: EdgeInsets.only(left: 10, right: 10),
-                          height: 120,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                          ),
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(top: 10, left: 10),
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      width: 55,
-                                      height: 55,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey,
-                                        border: Border.all(
-                                            color: Colors.white, width: 4),
-                                        shape: BoxShape.circle,
+                                        child: Text('Lihat'),
+                                        style: ElevatedButton.styleFrom(
+                                            primary: primarycolor,
+                                            shape: StadiumBorder()),
                                       ),
-                                      child: Icon(
-                                        Icons.business_center,
-                                        color: Colors.black,
-                                        size: 40,
+                                      SizedBox(
+                                        width: 10,
                                       ),
-                                    ),
-                                    Padding(padding: EdgeInsets.only(top: 2)),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text('Lihat'),
-                                      style: ElevatedButton.styleFrom(
-                                          primary: primarycolor,
-                                          shape: StadiumBorder()),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left: 20),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "Text Job",
-                                      style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 24,
-                                          color: Colors.black),
-                                    ),
-                                    Text(
-                                      "Text Job",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 17, color: Colors.black),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text('Lihat'),
-                                      style: ElevatedButton.styleFrom(
-                                          primary: primarycolor,
-                                          shape: StadiumBorder()),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                        iconSize: 45,
-                                        color: primarycolor,
+                                      ElevatedButton(
                                         onPressed: () {},
-                                        icon: Icon(Icons.bookmark)),
-                                    Padding(padding: EdgeInsets.only(top: 6)),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text('Apply'),
-                                      style: ElevatedButton.styleFrom(
-                                          primary: primarycolor,
-                                          shape: StadiumBorder()),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
+                                        child: Text('Apply'),
+                                        style: ElevatedButton.styleFrom(
+                                            primary: primarycolor,
+                                            shape: StadiumBorder()),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -367,7 +296,6 @@ class _DashboardState extends State<Dashboard> {
               ),
             ],
           ),
-        )
-      );
+        ));
   }
 }
