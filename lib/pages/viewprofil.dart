@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class ViewProfil extends StatefulWidget {
   const ViewProfil({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _ViewProfilState extends State<ViewProfil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "ViewProfil",
+          "lihatprofil".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -171,6 +172,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       ),
                     ],
                   ),
+                  Padding(padding: EdgeInsets.only(top: 10)),
                   Row(
                     children: <Widget>[
                       Align(

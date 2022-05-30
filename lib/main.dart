@@ -6,41 +6,40 @@ import 'package:go_job/pages/viewprofil.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:go_job/pages/login.dart';
 import 'package:go_job/pages/register.dart';
-
+import 'package:go_job/pages/gantibahasa.dart';
+import 'package:get/get.dart';
+import 'package:go_job/pages/localestring.dart';
 
 void main() {
-  runApp(
-    MyApp()
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return  GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      translations: LocaleString(),
+      locale: Locale('en', 'US'),
       home: MyBottomBar(),
     );
   }
 }
 
-
 class MyBottomBar extends StatefulWidget {
-  const MyBottomBar({ Key? key }) : super(key: key);
+  const MyBottomBar({Key? key}) : super(key: key);
 
   @override
   State<MyBottomBar> createState() => _MyBottomBarState();
-  
 }
 
 class _MyBottomBarState extends State<MyBottomBar> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    ViewProfil(),
     Register(),
+    Login(),
     Dashboard(),
     Profil(),
-    
   ];
   void onTappedBar(int index) {
     setState(() {
@@ -50,10 +49,8 @@ class _MyBottomBarState extends State<MyBottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold
-    (
+    return new Scaffold(
       body: _children[_currentIndex],
-
       bottomNavigationBar: BottomNavigationBar(
         //untuk bottom navigation barl
         elevation: 30,
@@ -62,30 +59,30 @@ class _MyBottomBarState extends State<MyBottomBar> {
         showUnselectedLabels: false,
         selectedIconTheme: IconThemeData(color: primarycolor, size: 30),
         iconSize: 30,
-        items: const <BottomNavigationBarItem>[
+        items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
             ),
-            label: 'Home',
+            label: 'beranda'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
             ),
-            label: 'Cari',
+            label: 'cari'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.bookmark,
             ),
-            label: 'Simpan',
+            label: 'tersimpan'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
             ),
-            label: 'Profil',
+            label: 'profil'.tr,
           ),
         ],
         onTap: onTappedBar,

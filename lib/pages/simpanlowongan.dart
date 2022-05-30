@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -30,7 +31,7 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Lowongan Tersimpan",
+          "lowongantersimpan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -174,7 +175,7 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
                                   textColor: Colors.white,
                                   color: primarycolor,
                                   child: Text(
-                                    "Lamar Sekarang",
+                                    "lamar".tr,
                                     style: TextStyle(
                                         fontSize: 20, color: Colors.white),
                                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -75,7 +76,7 @@ class _DashboardState extends State<Dashboard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              "Informasi",
+                              "informasi".tr,
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -91,7 +92,7 @@ class _DashboardState extends State<Dashboard> {
                             ElevatedButton(
                               onPressed: () {},
                               child: Text(
-                                'More Info',
+                                'info'.tr,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               style: ElevatedButton.styleFrom(
@@ -107,7 +108,7 @@ class _DashboardState extends State<Dashboard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "Cari Lowongan",
+                            "caripekerjaan".tr,
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -167,7 +168,7 @@ class _DashboardState extends State<Dashboard> {
                         children: <Widget>[
                           Container(
                             child: Text(
-                              "List Pekerjaan",
+                              "list".tr,
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -179,7 +180,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           Container(
                             child: Text(
-                              "Lihat Semua",
+                              "lihat".tr,
                               textAlign: TextAlign.end,
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
@@ -267,7 +268,7 @@ class _DashboardState extends State<Dashboard> {
                                     children: <Widget>[
                                       ElevatedButton(
                                         onPressed: () {},
-                                        child: Text('Lihat'),
+                                        child: Text('buka'.tr),
                                         style: ElevatedButton.styleFrom(
                                             primary: primarycolor,
                                             shape: StadiumBorder()),
@@ -277,7 +278,7 @@ class _DashboardState extends State<Dashboard> {
                                       ),
                                       ElevatedButton(
                                         onPressed: () {},
-                                        child: Text('Apply'),
+                                        child: Text('lamar'.tr),
                                         style: ElevatedButton.styleFrom(
                                             primary: primarycolor,
                                             shape: StadiumBorder()),

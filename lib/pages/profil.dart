@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_job/pages/gantibahasa.dart';
+import 'package:go_job/pages/lamar_sekarang.dart';
+import 'package:go_job/pages/simpanlowongan.dart';
+import 'package:go_job/pages/viewprofil.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class Profil extends StatefulWidget {
   const Profil({Key? key}) : super(key: key);
@@ -15,7 +20,7 @@ class _ProfilState extends State<Profil> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Profil",
+          "profil".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -65,10 +70,24 @@ class _ProfilState extends State<Profil> {
                               fontSize: 20,
                               color: Colors.white),
                         ),
-                        Text(
-                          "Kelola Profilmu",
-                          style: GoogleFonts.poppins(
-                              fontSize: 15, color: Colors.white),
+                        RichText(
+                          text: TextSpan(children: [
+                            WidgetSpan(
+                                child: GestureDetector(
+                              child: Text(
+                                'kelola'.tr,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 15, color: Colors.white),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ViewProfil()),
+                                );
+                              },
+                            ))
+                          ]),
                         ),
                       ],
                     ),
@@ -85,7 +104,11 @@ class _ProfilState extends State<Profil> {
               ),
               child: RaisedButton(
                 //Button Riwayat Lamaran
-                onPressed: () => {},
+                onPressed: () {
+                  Route route =
+                      MaterialPageRoute(builder: (context) => SimpanLowongan());
+                  Navigator.push(context, route);
+                },
                 color: Colors.white,
                 child: Container(
                   padding: const EdgeInsets.only(top: 5.0, bottom: 5),
@@ -97,7 +120,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "Riwayat Lamaran",
+                            "riwayat".tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -114,7 +137,11 @@ class _ProfilState extends State<Profil> {
               ),
               child: RaisedButton(
                 //Button Negara & Bahasa
-                onPressed: () => {},
+                onPressed: () {
+                  Route route =
+                      MaterialPageRoute(builder: (context) => GantiBahasa());
+                  Navigator.push(context, route);
+                },
                 color: Colors.white,
                 child: Container(
                   padding: const EdgeInsets.only(top: 5.0, bottom: 5),
@@ -126,7 +153,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "Negara & Bahasa",
+                            "bahasa".tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -155,7 +182,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "Hubungi Kami",
+                            "hubungi".tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -164,36 +191,7 @@ class _ProfilState extends State<Profil> {
               ),
             ),
             Container(
-              //Container Button Pengaturan
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                border: Border.all(color: primarycolor, width: 0.5),
-              ),
-              child: RaisedButton(
-                //Button Pengaturan
-                onPressed: () => {},
-                color: Colors.white,
-                child: Container(
-                  padding: const EdgeInsets.only(top: 5.0, bottom: 5),
-                  child: Row(
-                    children: [
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: Icon(Icons.settings)),
-                      Container(
-                          margin: const EdgeInsets.only(left: 10.0),
-                          child: Text(
-                            "Pengaturan",
-                            style: GoogleFonts.poppins(fontSize: 15.0),
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              //Container Button Pengaturan
+              //Container Button Logout
               width: double.infinity,
               height: 50,
               decoration: BoxDecoration(
@@ -213,7 +211,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "Logout",
+                            "keluar".tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],

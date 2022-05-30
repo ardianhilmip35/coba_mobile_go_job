@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class ProfilPerusahaan extends StatefulWidget {
   const ProfilPerusahaan({ Key? key }) : super(key: key);
@@ -15,7 +16,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Detail Perusahaan",
+          "detailperusahaan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -36,7 +37,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                 textInputAction: TextInputAction.search,
                 style: Theme.of(context).textTheme.bodyText1,
                 decoration: InputDecoration(
-                    labelText: "Search",
+                    labelText: "caripekerjaan".tr,
                     border: OutlineInputBorder(),
                     focusColor: Colors.grey,
                     labelStyle:
@@ -63,7 +64,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                       Padding(padding: EdgeInsets.only(left: 60.0)),
                       MaterialButton(
                         child: Text(
-                          "Pekerjaan",
+                          "pekerjaan".tr,
                           style: TextStyle(
                             fontSize: 20, color: primarycolor),
                         ),
@@ -72,7 +73,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                       Padding(padding: EdgeInsets.only(left: 130.0)),
                         MaterialButton(
                         child: Text(
-                          "Perusahaan",
+                          "perusahaan".tr,
                           style: TextStyle(
                             fontSize: 20, color: primarycolor),
                         ),
@@ -131,7 +132,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
               color: Colors.grey,
             ),
             child: Text(
-              "Tentang Perusahaan ",
+              "tentangperusahaan".tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
@@ -147,7 +148,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                 textColor: Colors.white,
                 color: primarycolor,
                 child: Text(
-                  "Simpan",
+                  "simpan".tr,
                 style: TextStyle(
                   fontSize: 18, color: Colors.white),
                 ),
@@ -163,7 +164,7 @@ class _ProfilPerusahaanState extends State<ProfilPerusahaan> {
                 textColor: Colors.white,
                 color: primarycolor,
                 child: Text(
-                  "Lamar Sekarang",
+                  "lamar".tr,
                 style: TextStyle(
                   fontSize: 18, color: Colors.white),
                 ),

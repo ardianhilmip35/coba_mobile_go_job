@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class LamarSekarang extends StatefulWidget {
   const LamarSekarang({ Key? key }) : super(key: key);
@@ -17,7 +18,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Lamar Sekarang",
+          "lamarsekarang".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -31,41 +32,6 @@ class _LamarSekarangState extends State<LamarSekarang> {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        //untuk bottom navigation bar
-        elevation: 30,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedIconTheme: IconThemeData(color: primarycolor, size: 40),
-        iconSize: 40,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            label: 'Cari',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bookmark,
-            ),
-            label: 'Simpan',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-            ),
-            label: 'Profil',
-          ),
-        ],
-      ),
       body : Padding(padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
           child: Column(
             children: [
@@ -73,7 +39,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                 textInputAction: TextInputAction.search,
                 style: Theme.of(context).textTheme.bodyText1,
                 decoration: InputDecoration(
-                    labelText: "Search",
+                    labelText: "caripekerjaan".tr,
                     border: OutlineInputBorder(),
                     focusColor: Colors.grey,
                     labelStyle:
@@ -217,7 +183,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                     Row(mainAxisAlignment: MainAxisAlignment.end, 
                                     children: [
                                       Text(
-                                        "Lihat",
+                                        "lihat".tr,
                                         style: TextStyle(
                                           fontSize: 15.0,
                                         ),
@@ -276,7 +242,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
             maxLines: 5,
             style: Theme.of(context).textTheme.bodyText1,
               decoration: InputDecoration(
-                hintText: "Informasi Pengalaman Anda :",
+                hintText: "informasipengalaman".tr,
                 border: OutlineInputBorder(),
                 focusColor: Colors.grey,
                 labelStyle:
@@ -326,7 +292,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                     Row(mainAxisAlignment: MainAxisAlignment.end, 
                                     children: [
                                       Text(
-                                        "Choose File  ",
+                                        "pilihfile".tr,
                                         style: TextStyle(
                                           fontSize: 15.0,
                                         ),
@@ -354,7 +320,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                 color: primarycolor,
                 textColor: Colors.white,
                 child: new Text(
-                  "Kirim Lamaran",
+                  "kirimlamaran".tr,
                   style: TextStyle(
                     fontSize: 15.0,
                   ),

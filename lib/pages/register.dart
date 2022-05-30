@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _RegisterState extends State<Register> {
                   child: TextFormField(
                     //untuk input email
                     decoration: new InputDecoration(
-                      labelText: "Nama Lengkap",
+                      labelText: "nama".tr,
                       icon: Icon(
                         Icons.person,
                       ),
@@ -52,7 +53,7 @@ class _RegisterState extends State<Register> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Nama tidak boleh kosong';
+                        return 'namakosong'.tr;
                       }
                       return null;
                     },
@@ -71,7 +72,7 @@ class _RegisterState extends State<Register> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Email tidak boleh kosong';
+                        return 'emailkosong'.tr;
                       }
                       return null;
                     },
@@ -84,14 +85,14 @@ class _RegisterState extends State<Register> {
                     //untuk textfield password
                     obscureText: true,
                     decoration: new InputDecoration(
-                      labelText: "Password",
+                      labelText: "sandi".tr,
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Password tidak boleh kosong';
+                        return 'sandikosong'.tr;
                       }
                       return null;
                     },
@@ -104,14 +105,14 @@ class _RegisterState extends State<Register> {
                     //untuk textfield password
                     obscureText: true,
                     decoration: new InputDecoration(
-                      labelText: "Confirm Password",
+                      labelText: "konfirsandi".tr,
                       icon: Icon(Icons.security),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Please Confirm Your Password";
+                        return "konfirkosong".tr;
                       }
                       return null;
                     },
@@ -139,7 +140,7 @@ class _RegisterState extends State<Register> {
                   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: new Text(
                     //untuk text or
-                    "Or",
+                    "atau".tr,
                     style: TextStyle(
                       fontSize: 15.0,
                     ),
@@ -156,7 +157,7 @@ class _RegisterState extends State<Register> {
                     size: 24.0,
                   ),
                   label: Text(
-                    'Sign Up With Google',
+                    'daftargoogle'.tr,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -165,22 +166,27 @@ class _RegisterState extends State<Register> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        //untuk text already have an account
-                        "Already have an account?",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                        ),
-                      ),
-                      SizedBox(width: 12),
-                      Text(
-                        //untuk text sign in
-                        "Sign In",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: primarycolor,
-                        ),
-                      ),
+                     RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                              text: 'sudahpunyaakun'.tr,
+                              style: TextStyle(color: Colors.grey)),
+                          WidgetSpan(
+                              child: GestureDetector(
+                            child: Text(
+                              'masuk'.tr,
+                              style: TextStyle(color: primarycolor),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Register()),
+                              );
+                            },
+                          ))
+                        ]),
+                      )
                     ],
                   ),
                 ),
