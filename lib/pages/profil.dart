@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_job/pages/gantibahasa.dart';
 import 'package:go_job/pages/lamar_sekarang.dart';
+import 'package:go_job/pages/riwayatlamaran.dart';
 import 'package:go_job/pages/simpanlowongan.dart';
 import 'package:go_job/pages/viewprofil.dart';
 import 'package:go_job/shared/shared.dart';
@@ -8,13 +8,54 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
 class Profil extends StatefulWidget {
-  const Profil({Key? key}) : super(key: key);
-
   @override
   State<Profil> createState() => _ProfilState();
 }
 
 class _ProfilState extends State<Profil> {
+  final List locale = [
+    {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
+    {'name': 'INDONESIA', 'locale': Locale('id', 'ID')},
+  ];
+
+  updateLanguage(Locale locale) {
+    Get.back();
+    Get.updateLocale(locale);
+  }
+
+  buildLanguageDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (builder) {
+          return AlertDialog(
+            title: Text('gantibahasamu'.tr),
+            content: Container(
+              width: double.maxFinite,
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        child: Text(locale[index]['name']),
+                        onTap: () {
+                          print(locale[index]['name']);
+                          updateLanguage(locale[index]['locale']);
+                        },
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      color: Colors.blue,
+                    );
+                  },
+                  itemCount: locale.length),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,7 +147,7 @@ class _ProfilState extends State<Profil> {
                 //Button Riwayat Lamaran
                 onPressed: () {
                   Route route =
-                      MaterialPageRoute(builder: (context) => SimpanLowongan());
+                      MaterialPageRoute(builder: (context) => RiwayatLamaran());
                   Navigator.push(context, route);
                 },
                 color: Colors.white,
@@ -138,9 +179,7 @@ class _ProfilState extends State<Profil> {
               child: RaisedButton(
                 //Button Negara & Bahasa
                 onPressed: () {
-                  Route route =
-                      MaterialPageRoute(builder: (context) => GantiBahasa());
-                  Navigator.push(context, route);
+                  buildLanguageDialog(context);
                 },
                 color: Colors.white,
                 child: Container(
@@ -170,7 +209,7 @@ class _ProfilState extends State<Profil> {
               ),
               child: RaisedButton(
                 //Button Hubungi Kami
-                onPressed: () => {},
+                onPressed: () {},
                 color: Colors.white,
                 child: Container(
                   padding: const EdgeInsets.only(top: 5.0, bottom: 5),

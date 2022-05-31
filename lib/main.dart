@@ -1,3 +1,4 @@
+//@dart=2.9
 import 'package:flutter/material.dart';
 import 'package:go_job/pages/dashboard.dart';
 import 'package:go_job/pages/profil.dart';
@@ -6,13 +7,14 @@ import 'package:go_job/pages/viewprofil.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:go_job/pages/login.dart';
 import 'package:go_job/pages/register.dart';
-import 'package:go_job/pages/gantibahasa.dart';
 import 'package:get/get.dart';
 import 'package:go_job/pages/localestring.dart';
 
 void main() {
   runApp(MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyBottomBar extends StatefulWidget {
-  const MyBottomBar({Key? key}) : super(key: key);
+  
 
   @override
   State<MyBottomBar> createState() => _MyBottomBarState();
@@ -36,7 +38,7 @@ class MyBottomBar extends StatefulWidget {
 class _MyBottomBarState extends State<MyBottomBar> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    Register(),
+    Dashboard(),
     Login(),
     Dashboard(),
     Profil(),
