@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:go_job/pages/lamar_sekarang.dart';
 import 'package:go_job/pages/riwayatlamaran.dart';
@@ -6,6 +8,7 @@ import 'package:go_job/pages/viewprofil.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Profil extends StatefulWidget {
   @override
@@ -54,6 +57,12 @@ class _ProfilState extends State<Profil> {
             ),
           );
         });
+  }
+
+  void launchWhatsapp() async {
+    String url = "https://api.whatsapp.com/send?phone=6282132395874&text=Halo%20min,%20bolehkan%20saya%20konsultasi%20mengenai%20proyek%20saya?";
+
+    await canLaunch(url) ? launch(url) : print("cant open wa");
   }
 
   @override
@@ -192,7 +201,7 @@ class _ProfilState extends State<Profil> {
                       Container(
                           margin: const EdgeInsets.only(left: 10.0),
                           child: Text(
-                            "bahasa".tr,
+                            "gantibahasa".tr,
                             style: GoogleFonts.poppins(fontSize: 15.0),
                           ))
                     ],
@@ -209,7 +218,9 @@ class _ProfilState extends State<Profil> {
               ),
               child: RaisedButton(
                 //Button Hubungi Kami
-                onPressed: () {},
+                onPressed: () {
+                  launchWhatsapp();
+                },
                 color: Colors.white,
                 child: Container(
                   padding: const EdgeInsets.only(top: 5.0, bottom: 5),

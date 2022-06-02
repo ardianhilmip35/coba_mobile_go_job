@@ -14,12 +14,10 @@ void main() {
   runApp(MyApp());
 }
 
-
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translations: LocaleString(),
       locale: Locale('id', 'ID'),
@@ -29,8 +27,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyBottomBar extends StatefulWidget {
-  
-
   @override
   State<MyBottomBar> createState() => _MyBottomBarState();
 }
@@ -40,7 +36,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
   final List<Widget> _children = [
     Dashboard(),
     Login(),
-    Dashboard(),
+    SimpanLowongan(),
     Profil(),
   ];
   void onTappedBar(int index) {
@@ -61,7 +57,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
         showUnselectedLabels: false,
         selectedIconTheme: IconThemeData(color: primarycolor, size: 30),
         iconSize: 30,
-        items:  <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,

@@ -36,52 +36,7 @@ class _SimpanLowonganState extends State<SimpanLowongan> {
         ),
         centerTitle: true,
         backgroundColor: primarycolor,
-        leading: IconButton(
-          //untuk back button
-          iconSize: 30,
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   //untuk bottom navigation bar
-      //   elevation: 30,
-      //   unselectedItemColor: Colors.grey,
-      //   showSelectedLabels: false,
-      //   showUnselectedLabels: false,
-      //   selectedIconTheme: IconThemeData(color: primarycolor, size: 40),
-      //   iconSize: 40,
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.home,
-      //       ),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.search,
-      //       ),
-      //       label: 'Cari',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.bookmark,
-      //       ),
-      //       label: 'Simpan',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.person,
-      //       ),
-      //       label: 'Profil',
-      //     ),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   onTap: _onItemTapped,
-      // ),
       body: Column(
         children: <Widget>[
           Container(

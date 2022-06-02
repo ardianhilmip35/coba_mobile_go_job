@@ -7,7 +7,6 @@ class LocaleString extends Translations {
         'en_US': {
           'kelola': 'Manage Your Profile',
           'riwayat': 'Application History',
-          'bahasa': 'Language & Country',
           'hubungi': 'Contact Us',
           'keluar': 'Logout',
           'informasi': 'Information',
@@ -58,7 +57,6 @@ class LocaleString extends Translations {
         'id_ID': {
           'kelola': 'Kelola Profilmu',
           'riwayat': 'Riwayat Lamaran',
-          'bahasa': 'Negara & Bahasa',
           'hubungi': 'Hubungi Kami',
           'keluar': 'Keluar',
           'informasi': 'Informasi',
