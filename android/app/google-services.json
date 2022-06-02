@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "731407225395",
+    "project_id": "go-job-83b1b",
+    "storage_bucket": "go-job-83b1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731407225395:android:b204f685bba5b91e920946",
+        "android_client_info": {
+          "package_name": "com.example.go_job"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731407225395-uq7caau54mgel3eb3u85vfiurugh5c3m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.go_job",
+            "certificate_hash": "f0a6305f959e3db79214951717a5cad31d2b5c67"
+          }
+        },
+        {
+          "client_id": "731407225395-aur17itas2u681ikmjqnlqsjj62830m1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZco7KQy1hdEWhjmUbdbteIbjezltU408"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731407225395-aur17itas2u681ikmjqnlqsjj62830m1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
