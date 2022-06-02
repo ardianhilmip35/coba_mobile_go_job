@@ -1,6 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:go_job/pages/lamar_sekarang.dart';
 import 'package:go_job/pages/riwayatlamaran.dart';
 import 'package:go_job/pages/simpanlowongan.dart';
@@ -16,6 +16,13 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
+  final Email email = Email(
+    body: 'Hello,',
+    subject: 'I Need Help',
+    recipients: ['galuhapriliano30@gmail.com'],
+    isHTML: false,
+  );
+
   final List locale = [
     {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
     {'name': 'INDONESIA', 'locale': Locale('id', 'ID')},
@@ -57,12 +64,6 @@ class _ProfilState extends State<Profil> {
             ),
           );
         });
-  }
-
-  void launchWhatsapp() async {
-    String url = "https://api.whatsapp.com/send?phone=6282132395874&text=Halo%20min,%20bolehkan%20saya%20konsultasi%20mengenai%20proyek%20saya?";
-
-    await canLaunch(url) ? launch(url) : print("cant open wa");
   }
 
   @override
@@ -218,8 +219,8 @@ class _ProfilState extends State<Profil> {
               ),
               child: RaisedButton(
                 //Button Hubungi Kami
-                onPressed: () {
-                  launchWhatsapp();
+                onPressed: () async {
+                  await FlutterEmailSender.send(email);
                 },
                 color: Colors.white,
                 child: Container(
