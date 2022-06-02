@@ -148,7 +148,7 @@ class _LoginState extends State<Login> {
                       
                     // },
                     child: Text(
-                      'Masuk'.tr,
+                      'masuk'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
