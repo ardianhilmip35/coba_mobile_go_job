@@ -6,6 +6,7 @@ import 'package:go_job/pages/login.dart';
 import 'dart:convert';
 import 'package:go_job/pages/dashboard.dart';
 import 'package:go_job/api/api_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -115,10 +116,11 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
+                    validator: (passwordValue) {
+                      if (passwordValue!.isEmpty) {
                         return 'sandikosong'.tr;
                       }
+                      password = passwordValue;
                       return null;
                     },
                   ),
@@ -227,5 +229,42 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
-  void _register
+   void _register() async{
+    setState(() {
+      _isLoading = true;
+    });
+    var data = {
+      'name' : name,
+      'email' : email,
+      'password' : password
+    };
+
+    var res = await Network().auth(data, '/register');
+    var body = json.decode(res.body);
+    if(body['success']){
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      localStorage.setString('token', json.encode(body['token']));
+      localStorage.setString('user', json.encode(body['user']));
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Dashboard()
+          ),
+      );
+    }else{
+      if(body['message']['name'] != null){
+        _showMsg(body['message']['name'][0].toString());
+      }
+      else if(body['message']['email'] != null){
+        _showMsg(body['message']['email'][0].toString());
+      }
+      else if(body['message']['password'] != null){
+        _showMsg(body['message']['password'][0].toString());
+      }
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
 }
