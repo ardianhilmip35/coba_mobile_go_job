@@ -51,8 +51,10 @@ class LocaleString extends Translations {
           'lihatprofil': 'View Profile',
           'gantibahasa': 'Change Language',
           'gantibahasamu': 'Choose Your Language',
+          'history': 'Application History',
+          'hubungi': 'Contact Us',
+          'bukawhatsapp': 'Open Whatsapp',
         },
-
         'id_ID': {
           'kelola': 'Kelola Profilmu',
           'riwayat': 'Riwayat Lamaran',
@@ -100,6 +102,9 @@ class LocaleString extends Translations {
           'lihatprofil': 'Lihat Profil',
           'gantibahasa': 'Ganti Bahasa',
           'gantibahasamu': 'Pilih Bahasa',
+          'history': 'Riwayat Lamaran',
+          'hubungi': 'Hubungi Kami',
+          'bukawhatsapp': 'Buka Whatsapp',
         }
       };
 }
