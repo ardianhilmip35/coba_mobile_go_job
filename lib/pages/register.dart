@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:go_job/pages/login.dart';
+import 'dart:convert';
+import 'package:go_job/pages/dashboard.dart';
+import 'package:go_job/api/api_services.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -9,11 +13,30 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  @override
+  bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _secureText = true;
+  late String name, email, password;
+
+  showHide() {
+    setState(() {
+      _secureText = !_secureText;
+    });
+  }
+
+  _showMsg(msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+    );
+    _scaffoldKey.currentState!.showSnackBar(snackBar);
+  }
+
+  @override
   double nilaiSlider = 1;
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(
           "Register",
@@ -51,10 +74,11 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
+                    validator: (namaValue) {
+                      if (namaValue!.isEmpty) {
                         return 'namakosong'.tr;
                       }
+                      name = namaValue;
                       return null;
                     },
                   ),
@@ -70,10 +94,11 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
+                    validator: (emailValue) {
+                      if (emailValue!.isEmpty) {
                         return 'emailkosong'.tr;
                       }
+                      email = emailValue;
                       return null;
                     },
                   ),
@@ -128,7 +153,9 @@ class _RegisterState extends State<Register> {
                       primary: primarycolor,
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
+                      if (_formKey.currentState!.validate()) {
+                        _register();
+                      }
                     },
                     child: Text(
                       'daftar'.tr,
@@ -200,4 +227,5 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
+  void _register
 }

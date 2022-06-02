@@ -9,6 +9,7 @@ import 'package:go_job/pages/register.dart';
 import 'package:go_job/pages/gantibahasa.dart';
 import 'package:get/get.dart';
 import 'package:go_job/pages/localestring.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MyApp());
@@ -91,3 +92,44 @@ class _MyBottomBarState extends State<MyBottomBar> {
     );
   }
 }
+
+class CheckAuth extends StatefulWidget {
+
+  @override
+  _CheckAuthState createState() => _CheckAuthState();
+}
+
+class _CheckAuthState extends State<CheckAuth> {
+  bool isAuth = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkIfLoggedIn();
+  }
+
+  void _checkIfLoggedIn() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    var token = localStorage.getString('token');
+    if(token != null) {
+      if(mounted) {
+        setState(() {
+          isAuth = true;
+        });
+      }
+    }
+  }
+   
+  Widget build(BuildContext context) {
+    Widget child;
+    if(isAuth) {
+      child = Dashboard();
+    } else {
+      child = Login();
+    }
+    return Scaffold(
+      body: child,
+    );
+  }
+}
+

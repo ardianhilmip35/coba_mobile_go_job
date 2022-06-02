@@ -1,8 +1,17 @@
+// import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:go_job/model/login_model.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:go_job/pages/register.dart';
+import 'package:go_job/pages/dashboard.dart';
+import 'package:go_job/api/api_services.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   @override
@@ -10,11 +19,41 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  @override
+  bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
+  var email, password;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _secureText = true;
+
+  showHide() {
+    setState(() {
+      _secureText = !_secureText;
+    });
+  }
+
+  _showMsg(msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+    );
+    _scaffoldKey.currentState!.showSnackBar(snackBar);
+  }
+  
+// final TextEditingController emailController = TextEditingController();
+// final TextEditingController passwordController = TextEditingController();
+// bool visible = false;
+// late LoginRequestModel requestModel;
+
+// @override
+// void initState() {
+//     super.initState();
+//     requestModel = new LoginRequestModel();
+//   }
+
+  @override
   double nilaiSlider = 1;
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(
           "Login",
@@ -45,6 +84,8 @@ class _LoginState extends State<Login> {
                       const EdgeInsets.only(top: 50.0, left: 8.8, right: 8.8),
                   child: TextFormField(
                     //untuk input email
+                    // onSaved: (value) => requestModel.email = value,
+                    // controller: emailController,
                     decoration: new InputDecoration(
                       labelText: "Email",
                       icon: Icon(Icons.email),
@@ -55,6 +96,7 @@ class _LoginState extends State<Login> {
                       if (value!.isEmpty) {
                         return 'emailkosong'.tr;
                       }
+                      email = value;
                       return null;
                     },
                   ),
@@ -64,6 +106,8 @@ class _LoginState extends State<Login> {
                       const EdgeInsets.only(top: 25.0, left: 8.8, right: 8.8),
                   child: TextFormField(
                     //untuk textfield password
+                    // controller: passwordController,
+                    // onSaved: (value) => requestModel.password = value,
                     obscureText: true,
                     decoration: new InputDecoration(
                       labelText: "sandi".tr,
@@ -71,10 +115,11 @@ class _LoginState extends State<Login> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
+                    validator: (passwordValue) {
+                      if (passwordValue!.isEmpty) {
                         return 'sandikosong'.tr;
                       }
+                      password = passwordValue;
                       return null;
                     },
                   ),
@@ -89,10 +134,21 @@ class _LoginState extends State<Login> {
                       primary: primarycolor,
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
+                      if (_formKey.currentState!.validate()) {
+                        _login();
+                      }
+                      // if(_formKey.currentState.validate()) {
+                      //   _login();
+                      // }
                     },
+                      // setState(() {
+                      //   visible = true;
+                      // });
+                      // signIn(emailController.text, passwordController.text);
+                      
+                    // },
                     child: Text(
-                      'masuk'.tr,
+                      'Masuk'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -160,4 +216,47 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+  void _login() async{
+    setState(() {
+      _isLoading = true;
+    });
+    
+    // var email;
+    // var password;
+    var data = {
+      'email' : email,
+      'password' : password
+    };
+
+    var res = await Network().auth(data, '/login');
+    var body = json.decode(res.body);
+    if(body['success']){
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      localStorage.setString('token', json.encode(body['token']));
+      localStorage.setString('user', json.encode(body['user']));
+      Navigator.pushReplacement(
+          context,
+          new MaterialPageRoute(
+              builder: (context) => Dashboard()
+          ),
+      );
+    }else{
+      _showMsg(body['message']);
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
 }
+
+// bool validateAndSave() {
+//   final form = _formKey.currentState;
+//   if(form.validate()) {
+//     form.save();
+//     return true;
+//   } return false;
+// }
+
+
+
