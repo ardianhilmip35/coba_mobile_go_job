@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_job/controller/logincontroller.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,8 @@ class ViewProfil extends StatefulWidget {
 }
 
 class _ViewProfilState extends State<ViewProfil> {
+  final controller = Get.put(LoginController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +80,7 @@ class _ViewProfilState extends State<ViewProfil> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "Galuh Apriliano",
+                          controller.googleAccount.value?.displayName ?? '',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
@@ -100,7 +103,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 5)),
                             Text(
-                              "galuhapriliano@gmail.com",
+                              controller.googleAccount.value?.email ?? '',
                               style: GoogleFonts.poppins(
                                   fontSize: 15, color: Colors.grey),
                             ),

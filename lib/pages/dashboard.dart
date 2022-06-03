@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_job/controller/logincontroller.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  final controller = Get.put(LoginController());
+
   Color _iconColor = Colors.grey;
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,7 @@ class _DashboardState extends State<Dashboard> {
                       Container(
                         child: Row(children: <Widget>[
                           Text(
-                            "Galuh Apriliano",
+                            controller.googleAccount.value?.displayName ?? '',
                             textAlign: TextAlign.end,
                             style: GoogleFonts.poppins(
                                 fontSize: 20, color: Colors.black),
@@ -167,6 +170,7 @@ class _DashboardState extends State<Dashboard> {
                       child: Row(
                         children: <Widget>[
                           Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
                               "list".tr,
                               style: GoogleFonts.poppins(
@@ -175,10 +179,8 @@ class _DashboardState extends State<Dashboard> {
                                   color: Colors.black),
                             ),
                           ),
-                          SizedBox(
-                            width: 120,
-                          ),
                           Container(
+                            width: MediaQuery.of(context).size.width / 2.2,
                             child: Text(
                               "lihat".tr,
                               textAlign: TextAlign.end,
@@ -244,22 +246,25 @@ class _DashboardState extends State<Dashboard> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 120,
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                2.2,
+                                        alignment: Alignment.centerRight,
+                                        child: IconButton(
+                                            iconSize: 45,
+                                            color: _iconColor,
+                                            onPressed: () {
+                                              setState(() {
+                                                if (_iconColor == Colors.grey) {
+                                                  _iconColor = primarycolor;
+                                                } else {
+                                                  _iconColor = Colors.grey;
+                                                }
+                                              });
+                                            },
+                                            icon: Icon(Icons.bookmark)),
                                       ),
-                                      IconButton(
-                                          iconSize: 45,
-                                          color: _iconColor,
-                                          onPressed: () {
-                                            setState(() {
-                                              if (_iconColor == Colors.grey) {
-                                                _iconColor = primarycolor;
-                                              } else {
-                                                _iconColor = Colors.grey;
-                                              }
-                                            });
-                                          },
-                                          icon: Icon(Icons.bookmark)),
                                     ],
                                   ),
                                 ),

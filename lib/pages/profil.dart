@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:go_job/controller/logincontroller.dart';
 import 'package:go_job/pages/lamar_sekarang.dart';
 import 'package:go_job/pages/riwayatlamaran.dart';
 import 'package:go_job/pages/simpanlowongan.dart';
@@ -16,6 +17,8 @@ class Profil extends StatefulWidget {
 }
 
 class _ProfilState extends State<Profil> {
+  final controller = Get.put(LoginController());
+
   final Email email = Email(
     body: 'Hello,',
     subject: 'I Need Help',
@@ -90,22 +93,12 @@ class _ProfilState extends State<Profil> {
               ),
               child: Row(
                 children: <Widget>[
-                  Container(
-                    //Container Foto Profil
-                    margin: EdgeInsets.only(left: 20),
-                    width: 80,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      border: Border.all(color: Colors.white, width: 4),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      //Icon Foto Profil
-                      Icons.person,
-                      color: Colors.white,
-                      size: 70,
-                    ),
+                  Padding(padding: EdgeInsets.only(left: 10)),
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: Image.network(
+                            controller.googleAccount.value?.photoUrl ?? '')
+                        .image,
                   ),
                   Container(
                     //Container Nama Profil
@@ -115,7 +108,7 @@ class _ProfilState extends State<Profil> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "Galuh Apriliano",
+                          controller.googleAccount.value?.displayName ?? '',
                           style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -250,7 +243,9 @@ class _ProfilState extends State<Profil> {
               ),
               child: RaisedButton(
                 //Button Logout
-                onPressed: () => {},
+                onPressed: () {
+                  controller.logout();
+                },
                 color: Colors.white,
                 child: Container(
                   padding: const EdgeInsets.only(top: 5.0, bottom: 5),
