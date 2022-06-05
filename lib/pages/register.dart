@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_job/controller/logincontroller.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final controller = Get.put(LoginController());
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -181,7 +183,9 @@ class _RegisterState extends State<Register> {
                     style: ElevatedButton.styleFrom(
                       primary: primarycolor,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.login();
+                    },
                     icon: Icon(
                       // <-- Icon
                       Icons.login,
@@ -198,7 +202,7 @@ class _RegisterState extends State<Register> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                     RichText(
+                      RichText(
                         text: TextSpan(children: [
                           TextSpan(
                               text: 'sudahpunyaakun'.tr,
@@ -229,36 +233,29 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
-   void _register() async{
+
+  void _register() async {
     setState(() {
       _isLoading = true;
     });
-    var data = {
-      'name' : name,
-      'email' : email,
-      'password' : password
-    };
+    var data = {'name': name, 'email': email, 'password': password};
 
     var res = await Network().auth(data, '/register');
     var body = json.decode(res.body);
-    if(body['success']){
+    if (body['success']) {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString('token', json.encode(body['token']));
       localStorage.setString('user', json.encode(body['user']));
       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Dashboard()
-          ),
+        context,
+        MaterialPageRoute(builder: (context) => Dashboard()),
       );
-    }else{
-      if(body['message']['name'] != null){
+    } else {
+      if (body['message']['name'] != null) {
         _showMsg(body['message']['name'][0].toString());
-      }
-      else if(body['message']['email'] != null){
+      } else if (body['message']['email'] != null) {
         _showMsg(body['message']['email'][0].toString());
-      }
-      else if(body['message']['password'] != null){
+      } else if (body['message']['password'] != null) {
         _showMsg(body['message']['password'][0].toString());
       }
     }

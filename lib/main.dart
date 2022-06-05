@@ -1,7 +1,13 @@
 //@dart=2.9
 import 'package:flutter/material.dart';
 import 'package:go_job/pages/dashboard.dart';
+import 'package:go_job/pages/detail_lowongan.dart';
+import 'package:go_job/pages/editprofil.dart';
+import 'package:go_job/pages/lamar_sekarang.dart';
+import 'package:go_job/pages/lowongan_pekerjaan.dart';
+import 'package:go_job/pages/pengalaman.dart';
 import 'package:go_job/pages/profil.dart';
+import 'package:go_job/pages/profil_perusahaan.dart';
 import 'package:go_job/pages/simpanlowongan.dart';
 import 'package:go_job/pages/viewprofil.dart';
 import 'package:go_job/shared/shared.dart';
@@ -36,7 +42,7 @@ class _MyBottomBarState extends State<MyBottomBar> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     Dashboard(),
-    Login(),
+    LowonganPekerjaan(),
     SimpanLowongan(),
     Profil(),
   ];

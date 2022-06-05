@@ -11,6 +11,7 @@ class LowonganPekerjaan extends StatefulWidget {
 }
 
 class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
+  Color _iconColor = Colors.grey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +54,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(5),
-                    height: 320,
+                    height: 315,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: primarycolor,
@@ -76,7 +77,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                           "PT Patma Tirta Jaya",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                              fontSize: 25,
                               color: Colors.white),
                         ),
                         Container(
@@ -90,7 +91,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                             border: Border.all(color: Colors.white, width: 2),
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(10),
@@ -101,7 +102,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                       "Web Developtment Staff",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 25,
+                                          fontSize: 20,
                                           color: primarycolor),
                                     ),
                                     Padding(padding: EdgeInsets.only(top: 20)),
@@ -109,49 +110,56 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                       "Surabaya, Jawa Timur",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 25,
+                                          fontSize: 20,
                                           color: primarycolor),
                                     ),
-                                    Padding(padding: EdgeInsets.only(top: 52)),
+                                    Padding(padding: EdgeInsets.only(top: 70)),
                                     Text(
                                       "5 Hari yang lalu",
                                       style: TextStyle(
-                                          fontSize: 18, color: primarycolor),
+                                          fontSize: 20, color: primarycolor),
                                     ),
                                   ],
                                 ),
                               ),
                               Container(
-                                  padding: EdgeInsets.only(right: 1),
+                                padding: EdgeInsets.only(left: 10),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      IconButton(
-                                          alignment: Alignment.topRight,
-                                          iconSize: 45,
-                                          color: primarycolor,
-                                          onPressed: () {},
-                                          icon: Icon(Icons.bookmark_border)),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 80),
-                                      ),
-                                      RaisedButton(
-                                        textColor: Colors.white,
-                                        color: primarycolor,
-                                        child: Text(
-                                          "lamar".tr,
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.white),
-                                        ),
-                                        onPressed: () {},
-                                        shape: new RoundedRectangleBorder(
-                                          borderRadius:
-                                              new BorderRadius.circular(12.0),
-                                        ),
-                                      ),
-                                    ],
-                                  )),
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  IconButton(
+                                      alignment: Alignment.topRight,
+                                      iconSize: 45,
+                                      color: _iconColor,
+                                      onPressed: () {
+                                        setState(() {
+                                          if (_iconColor == Colors.grey) {
+                                            _iconColor = primarycolor;
+                                          } else {
+                                            _iconColor = Colors.grey;
+                                          }
+                                        });
+                                      },
+                                      icon: Icon(Icons.bookmark)),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 70),
+                                  ),
+                                  RaisedButton(
+                                    textColor: Colors.white,
+                                    color: primarycolor,
+                                    child: Text(
+                                      "lamar".tr,
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.white),
+                                    ),
+                                    onPressed: () {},
+                                    shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(12.0),
+                                    ),
+                                  ),
+                                ],
+                              )),
                             ],
                           ),
                         ),
@@ -161,120 +169,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 15.0, bottom: 5.0),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    height: 320,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: primarycolor,
-                      border: Border.all(color: primarycolor, width: 4),
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          //Container Foto Profil
-                          margin: EdgeInsets.only(top: 10, bottom: 10),
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            border: Border.all(color: Colors.grey, width: 4),
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        Text(
-                          "PT Patma Tirta Jaya",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                              color: Colors.white),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            top: 10,
-                          ),
-                          width: double.infinity,
-                          height: 185,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.white, width: 2),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "Web Developtment Staff",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 25,
-                                          color: primarycolor),
-                                    ),
-                                    Padding(padding: EdgeInsets.only(top: 20)),
-                                    Text(
-                                      "Surabaya, Jawa Timur",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 25,
-                                          color: primarycolor),
-                                    ),
-                                    Padding(padding: EdgeInsets.only(top: 52)),
-                                    Text(
-                                      "5 Hari yang lalu",
-                                      style: TextStyle(
-                                          fontSize: 18, color: primarycolor),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                  padding: EdgeInsets.only(right: 1),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      IconButton(
-                                          alignment: Alignment.topRight,
-                                          iconSize: 45,
-                                          color: primarycolor,
-                                          onPressed: () {},
-                                          icon: Icon(Icons.bookmark_border)),
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 80),
-                                      ),
-                                      RaisedButton(
-                                        textColor: Colors.white,
-                                        color: primarycolor,
-                                        child: Text(
-                                          "lamar".tr,
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.white),
-                                        ),
-                                        onPressed: () {},
-                                        shape: new RoundedRectangleBorder(
-                                          borderRadius:
-                                              new BorderRadius.circular(12.0),
-                                        ),
-                                      ),
-                                    ],
-                                  )),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            )
+          
           ],
         ),
       ),

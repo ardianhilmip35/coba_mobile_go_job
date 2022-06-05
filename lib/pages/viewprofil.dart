@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_job/controller/logincontroller.dart';
+import 'package:go_job/pages/editprofil.dart';
+import 'package:go_job/pages/pengalaman.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -40,7 +42,10 @@ class _ViewProfilState extends State<ViewProfil> {
               width: double.infinity,
               child: IconButton(
                 alignment: Alignment.topRight,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => EditProfil()));
+                },
                 icon: Icon(Icons.edit),
                 color: primarycolor,
               ),
@@ -118,8 +123,8 @@ class _ViewProfilState extends State<ViewProfil> {
             Container(
               height: 170,
               width: double.infinity,
-              decoration: BoxDecoration(
-                  border: Border.all(color: primarycolor)),
+              decoration:
+                  BoxDecoration(border: Border.all(color: primarycolor)),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -132,7 +137,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.business_center),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              "Pengalaman Kerja",
+                              "pengalamankerja".tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],
@@ -141,20 +146,33 @@ class _ViewProfilState extends State<ViewProfil> {
                     ],
                   ),
                   Padding(padding: EdgeInsets.only(top: 100)),
-                  Text(
-                    "Tambahkan Pengalaman Kerja",
-                    textAlign: TextAlign.end,
-                    style:
-                        GoogleFonts.poppins(fontSize: 15, color: primarycolor),
-                  ),
+                  RichText(
+                          text: TextSpan(children: [
+                            WidgetSpan(
+                                child: GestureDetector(
+                              child: Text(
+                                'tambahpengalaman'.tr,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 15, color: primarycolor),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Pengalaman()),
+                                );
+                              },
+                            ))
+                          ]),
+                        ),
                 ],
               ),
             ),
             Container(
               height: 180,
               width: double.infinity,
-              decoration: BoxDecoration(
-                  border: Border.all(color: primarycolor)),
+              decoration:
+                  BoxDecoration(border: Border.all(color: primarycolor)),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -167,7 +185,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.school),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              "Pendidikan",
+                              "pendidikan".tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],
@@ -184,7 +202,7 @@ class _ViewProfilState extends State<ViewProfil> {
                           children: <Widget>[
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              "Politeknik Negeri Jember",
+                              "pendidikan".tr,
                               style: GoogleFonts.poppins(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
@@ -215,8 +233,8 @@ class _ViewProfilState extends State<ViewProfil> {
             Container(
               height: 150,
               width: double.infinity,
-              decoration: BoxDecoration(
-                  border: Border.all(color: primarycolor)),
+              decoration:
+                  BoxDecoration(border: Border.all(color: primarycolor)),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -229,7 +247,7 @@ class _ViewProfilState extends State<ViewProfil> {
                             Icon(Icons.emoji_objects),
                             Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              "Keterampilan",
+                              "keterampilan".tr,
                               style: GoogleFonts.poppins(fontSize: 20),
                             ),
                           ],

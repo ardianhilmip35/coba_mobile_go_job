@@ -53,6 +53,13 @@ class LocaleString extends Translations {
           'history': 'Application History',
           'hubungi': 'Contact Us',
           'bukawhatsapp': 'Open Whatsapp',
+          'batal' : 'Cancel',
+          'editprofil' : 'Edit Profile',
+          'pengalaman' : 'Experience',
+          'pengalamankerja' : 'Work Experience',
+          'pendidikan' : 'Education',
+          'keterampilan' : 'Skills',
+          'tambahpengalaman' : 'Add Experience',
         },
         'id_ID': {
           'kelola': 'Kelola Profilmu',
@@ -103,6 +110,13 @@ class LocaleString extends Translations {
           'history': 'Riwayat Lamaran',
           'hubungi': 'Hubungi Kami',
           'bukawhatsapp': 'Buka Whatsapp',
+          'batal' : 'Batal',
+          'editprofil' : 'Edit Profil',
+          'pengalaman' : 'Pengalaman',
+          'pengalamankerja' : 'Pengalaman Kerja',
+          'pendidikan' : 'Pendidikan',
+          'keterampilan' : 'Keterampilan',
+          'tambahpengalaman' : 'Tambah Pengalaman',
         }
       };
 }
