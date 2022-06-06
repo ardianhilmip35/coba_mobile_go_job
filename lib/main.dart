@@ -9,6 +9,7 @@ import 'package:go_job/pages/pengalaman.dart';
 import 'package:go_job/pages/profil.dart';
 import 'package:go_job/pages/profil_perusahaan.dart';
 import 'package:go_job/pages/simpanlowongan.dart';
+import 'package:go_job/pages/splashscreen.dart';
 import 'package:go_job/pages/viewprofil.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:go_job/pages/login.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       translations: LocaleString(),
       locale: Locale('id', 'ID'),
-      home: MyBottomBar(),
+      home: SplashScreen(),
     );
   }
 }

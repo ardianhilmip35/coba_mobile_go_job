@@ -17,33 +17,57 @@
 //   }
 // }
 
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
+// import 'package:shared_preferences/shared_preferences.dart';
+
+// class Network{
+//   final String url = 'http://127.0.0.1:8000/api/login';
+//   var token;
+
+//   _getToken() async {
+//     SharedPreferences localStorage = await  SharedPreferences.getInstance();
+//     token = jsonDecode(localStorage.getString('token'))['token'];
+//   }
+
+//   auth(data, apiURL) async {
+//     var fullUrl = url + apiURL;
+//     return await http.post(Uri.parse(fullUrl), body: jsonDecode(data),headers: _setHeaders());
+//   }
+
+//   getData(apiURL) async {
+//     var fullUrl = url + apiURL;
+//     await _getToken();
+//     return await http.get(Uri.parse(fullUrl), headers: _setHeaders());
+//   }
+
+//   _setHeaders() => {
+//     'Content-type': 'application/json',
+//     'Accept': 'appliction/json',
+//     'Authorization': 'Bearer $token',
+//   };
+// }
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_job/model/login_model.dart';
 
-class Network{
-  final String url = 'http://127.0.0.1:8000/api/login';
-  var token;
+class LoginUser {
+  static Future<LoginResponseModel> loginUser(String email, password) async {
+    Uri _apiURL = Uri.parse("http://127.0.0.1:8000/api/login");
 
-  _getToken() async {
-    SharedPreferences localStorage = await  SharedPreferences.getInstance();
-    token = jsonDecode(localStorage.getString('token'))['token'];
+    var response = await http.post(
+      _apiURL,
+      body: {
+        "email": email,
+        "password": password,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return LoginResponseModel.fromJson(json.decode(response.body));
+    } else {
+      throw Exception("Failed to create User");
+    }
   }
-
-  auth(data, apiURL) async {
-    var fullUrl = url + apiURL;
-    return await http.post(Uri.parse(fullUrl), body: jsonDecode(data),headers: _setHeaders());
-  }
-
-  getData(apiURL) async {
-    var fullUrl = url + apiURL;
-    await _getToken();
-    return await http.get(Uri.parse(fullUrl), headers: _setHeaders());
-  }
-
-  _setHeaders() => {
-    'Content-type': 'application/json',
-    'Accept': 'appliction/json',
-    'Authorization': 'Bearer $token',
-  };
 }

@@ -12,6 +12,8 @@ import 'package:go_job/api/api_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:go_job/Notifikasi/toast.dart';
+import 'package:go_job/main.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -19,27 +21,59 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final controller = Get.put(LoginController());
+  // final controller = Get.put(LoginController());
 
-  bool _isLoading = false;
+  // bool _isLoading = false;
+  // final _formKey = GlobalKey<FormState>();
+  // var email, password;
+  // final _scaffoldKey = GlobalKey<ScaffoldState>();
+  // bool _secureText = true;
+
+  // showHide() {
+  //   setState(() {
+  //     _secureText = !_secureText;
+  //   });
+  // }
+
+  // _showMsg(msg) {
+  //   final snackBar = SnackBar(
+  //     content: Text(msg),
+  //   );
+  //   _scaffoldKey.currentState!.showSnackBar(snackBar);
+  // }
   final _formKey = GlobalKey<FormState>();
-  var email, password;
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool _secureText = true;
+  final _toast = ShowToast();
+  String _idUser = "";
 
-  showHide() {
-    setState(() {
-      _secureText = !_secureText;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _login() async {
+    LoginUser.loginUser(_emailController.text, _passwordController.text)
+        .then((value) {
+      if (value.kode == 200) {
+        _idUser = value.id.toString();
+        sessionLogin();
+        _toast.showToast(value.pesan);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MyBottomBar(),
+          ),
+        );
+      } else {
+        _toast.showToast(value.pesan);
+      }
     });
   }
 
-  _showMsg(msg) {
-    final snackBar = SnackBar(
-      content: Text(msg),
-    );
-    _scaffoldKey.currentState!.showSnackBar(snackBar);
+  Future sessionLogin() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      pref.setString("id_user", _idUser);
+      pref.setBool("is_login", true);
+    });
   }
-
 // final TextEditingController emailController = TextEditingController();
 // final TextEditingController passwordController = TextEditingController();
 // bool visible = false;
@@ -52,15 +86,16 @@ class _LoginState extends State<Login> {
 //   }
 
   @override
-  double nilaiSlider = 1;
+  // double nilaiSlider = 1;
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      key: _formKey,
       appBar: AppBar(
         title: Text(
           "Login",
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: primarycolor,
       ),
@@ -87,7 +122,7 @@ class _LoginState extends State<Login> {
                   child: TextFormField(
                     //untuk input email
                     // onSaved: (value) => requestModel.email = value,
-                    // controller: emailController,
+                    controller: _emailController,
                     decoration: new InputDecoration(
                       labelText: "Email",
                       icon: Icon(Icons.email),
@@ -98,7 +133,7 @@ class _LoginState extends State<Login> {
                       if (value!.isEmpty) {
                         return 'emailkosong'.tr;
                       }
-                      email = value;
+                      // email = value;
                       return null;
                     },
                   ),
@@ -108,7 +143,7 @@ class _LoginState extends State<Login> {
                       const EdgeInsets.only(top: 25.0, left: 8.8, right: 8.8),
                   child: TextFormField(
                     //untuk textfield password
-                    // controller: passwordController,
+                    controller: _passwordController,
                     // onSaved: (value) => requestModel.password = value,
                     obscureText: true,
                     decoration: new InputDecoration(
@@ -117,11 +152,11 @@ class _LoginState extends State<Login> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    validator: (passwordValue) {
-                      if (passwordValue!.isEmpty) {
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return 'sandikosong'.tr;
                       }
-                      password = passwordValue;
+                      // password = passwordValue;
                       return null;
                     },
                   ),
@@ -132,6 +167,10 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   width: 210,
                   child: ElevatedButton(
+                    child: Text(
+                      'masuk'.tr,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     style: ElevatedButton.styleFrom(
                       primary: primarycolor,
                     ),
@@ -149,10 +188,7 @@ class _LoginState extends State<Login> {
                     // signIn(emailController.text, passwordController.text);
 
                     // },
-                    child: Text(
-                      'masuk'.tr,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    
                   ),
                 ),
                 Padding(
@@ -172,7 +208,7 @@ class _LoginState extends State<Login> {
                       primary: primarycolor,
                     ),
                     onPressed: () {
-                      controller.login();
+                      // controller.login();
                     },
                     icon: Icon(
                       Icons.login,
@@ -221,33 +257,33 @@ class _LoginState extends State<Login> {
     );
   }
 
-  void _login() async {
-    setState(() {
-      _isLoading = true;
-    });
+//   void _login() async {
+//     setState(() {
+//       _isLoading = true;
+//     });
 
-    // var email;
-    // var password;
-    var data = {'email': email, 'password': password};
+//     // var email;
+//     // var password;
+//     var data = {'email': email, 'password': password};
 
-    var res = await Network().auth(data, '/login');
-    var body = json.decode(res.body);
-    if (body['success']) {
-      SharedPreferences localStorage = await SharedPreferences.getInstance();
-      localStorage.setString('token', json.encode(body['token']));
-      localStorage.setString('user', json.encode(body['user']));
-      Navigator.pushReplacement(
-        context,
-        new MaterialPageRoute(builder: (context) => Dashboard()),
-      );
-    } else {
-      _showMsg(body['message']);
-    }
+//     var res = await LoginResponseModel().auth(data, '/login');
+//     var body = json.decode(res.body);
+//     if (body['success']) {
+//       SharedPreferences localStorage = await SharedPreferences.getInstance();
+//       localStorage.setString('token', json.encode(body['token']));
+//       localStorage.setString('user', json.encode(body['user']));
+//       Navigator.pushReplacement(
+//         context,
+//         new MaterialPageRoute(builder: (context) => Dashboard()),
+//       );
+//     } else {
+//       _showMsg(body['message']);
+//     }
 
-    setState(() {
-      _isLoading = false;
-    });
-  }
+//     setState(() {
+//       _isLoading = false;
+//     });
+//   }
 }
 
 // bool validateAndSave() {
