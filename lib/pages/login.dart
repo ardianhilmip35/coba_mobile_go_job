@@ -41,39 +41,39 @@ class _LoginState extends State<Login> {
   //   );
   //   _scaffoldKey.currentState!.showSnackBar(snackBar);
   // }
-  final _formKey = GlobalKey<FormState>();
-  final _toast = ShowToast();
-  String _idUser = "";
+  // final _formKey = GlobalKey<FormState>();
+  // final _toast = ShowToast();
+  // String _idUser = "";
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
 
-  void _login() async {
-    LoginUser.loginUser(_emailController.text, _passwordController.text)
-        .then((value) {
-      if (value.kode == 200) {
-        _idUser = value.id.toString();
-        sessionLogin();
-        _toast.showToast(value.pesan);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MyBottomBar(),
-          ),
-        );
-      } else {
-        _toast.showToast(value.pesan);
-      }
-    });
-  }
+  // void _login() async {
+  //   LoginUser.loginUser(_emailController.text, _passwordController.text)
+  //       .then((value) {
+  //     if (value.kode == 200) {
+  //       _idUser = value.id.toString();
+  //       sessionLogin();
+  //       _toast.showToast(value.pesan);
+  //       Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (context) => MyBottomBar(),
+  //         ),
+  //       );
+  //     } else {
+  //       _toast.showToast(value.pesan);
+  //     }
+  //   });
+  // }
 
-  Future sessionLogin() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    setState(() {
-      pref.setString("id_user", _idUser);
-      pref.setBool("is_login", true);
-    });
-  }
+  // Future sessionLogin() async {
+  //   final SharedPreferences pref = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     pref.setString("id_user", _idUser);
+  //     pref.setBool("is_login", true);
+  //   });
+  // }
 // final TextEditingController emailController = TextEditingController();
 // final TextEditingController passwordController = TextEditingController();
 // bool visible = false;
@@ -84,12 +84,18 @@ class _LoginState extends State<Login> {
 //     super.initState();
 //     requestModel = new LoginRequestModel();
 //   }
+String _email = '';
+String _password = '';
+
+loginPressed() {
+  
+}
 
   @override
   // double nilaiSlider = 1;
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _formKey,
+      // key: _formKey,
       appBar: AppBar(
         title: Text(
           "Login",
@@ -101,7 +107,7 @@ class _LoginState extends State<Login> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: _formKey,
+          // key: _formKey,
           child: Container(
             margin: const EdgeInsets.only(top: 10.0),
             padding: EdgeInsets.all(20.0),
@@ -122,13 +128,16 @@ class _LoginState extends State<Login> {
                   child: TextFormField(
                     //untuk input email
                     // onSaved: (value) => requestModel.email = value,
-                    controller: _emailController,
+                    // controller: _emailController,
                     decoration: new InputDecoration(
                       labelText: "Email",
                       icon: Icon(Icons.email),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
+                    onChanged: (value) {
+                      _email = value;
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'emailkosong'.tr;
@@ -143,7 +152,7 @@ class _LoginState extends State<Login> {
                       const EdgeInsets.only(top: 25.0, left: 8.8, right: 8.8),
                   child: TextFormField(
                     //untuk textfield password
-                    controller: _passwordController,
+                    // controller: _passwordController,
                     // onSaved: (value) => requestModel.password = value,
                     obscureText: true,
                     decoration: new InputDecoration(
@@ -152,6 +161,9 @@ class _LoginState extends State<Login> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
+                    onChanged: (value) {
+                      _password = value;
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'sandikosong'.tr;
@@ -174,14 +186,14 @@ class _LoginState extends State<Login> {
                     style: ElevatedButton.styleFrom(
                       primary: primarycolor,
                     ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _login();
-                      }
+                    onPressed: () => loginPressed(),
+                      // if (_formKey.currentState!.validate()) {
+                      //   _login();
+                      // }
                       // if(_formKey.currentState.validate()) {
                       //   _login();
                       // }
-                    },
+                    // },
                     // setState(() {
                     //   visible = true;
                     // });

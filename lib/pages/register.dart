@@ -16,31 +16,37 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final controller = Get.put(LoginController());
-  bool _isLoading = false;
-  final _formKey = GlobalKey<FormState>();
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool _secureText = true;
-  late String name, email, password;
+  String _namaPelamar = '';
+  String _email = '';
+  String _password= '';
+  // final controller = Get.put(LoginController());
+  // bool _isLoading = false;
+  // final _formKey = GlobalKey<FormState>();
+  // final _scaffoldKey = GlobalKey<ScaffoldState>();
+  // bool _secureText = true;
+  // late String name, email, password;
 
-  showHide() {
-    setState(() {
-      _secureText = !_secureText;
-    });
-  }
+  // showHide() {
+  //   setState(() {
+  //     _secureText = !_secureText;
+  //   });
+  // }
 
-  _showMsg(msg) {
-    final snackBar = SnackBar(
-      content: Text(msg),
-    );
-    _scaffoldKey.currentState!.showSnackBar(snackBar);
+  // _showMsg(msg) {
+  //   final snackBar = SnackBar(
+  //     content: Text(msg),
+  //   );
+  //   _scaffoldKey.currentState!.showSnackBar(snackBar);
+  // }
+  createAccountPressed() {
+    
   }
 
   @override
-  double nilaiSlider = 1;
+  // double nilaiSlider = 1;
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      // key: _scaffoldKey,
       appBar: AppBar(
         title: Text(
           "Register",
@@ -51,7 +57,7 @@ class _RegisterState extends State<Register> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: _formKey,
+          // key: _formKey,
           child: Container(
             padding: EdgeInsets.all(20.0),
             child: Column(
@@ -78,11 +84,14 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    validator: (namaValue) {
-                      if (namaValue!.isEmpty) {
+                    onChanged: (value) {
+                      _namaPelamar = value;
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return 'namakosong'.tr;
                       }
-                      name = namaValue;
+                      // name = namaValue;
                       return null;
                     },
                   ),
@@ -98,11 +107,14 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    validator: (emailValue) {
-                      if (emailValue!.isEmpty) {
+                    onChanged: (value) {
+                      _email = value;
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return 'emailkosong'.tr;
                       }
-                      email = emailValue;
+                      // email = emailValue;
                       return null;
                     },
                   ),
@@ -119,11 +131,14 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    validator: (passwordValue) {
-                      if (passwordValue!.isEmpty) {
+                    onChanged: (value) {
+                      _password = value;
+                    },
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return 'sandikosong'.tr;
                       }
-                      password = passwordValue;
+                      // password = passwordValue;
                       return null;
                     },
                   ),
@@ -157,11 +172,11 @@ class _RegisterState extends State<Register> {
                     style: ElevatedButton.styleFrom(
                       primary: primarycolor,
                     ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // _register();
-                      }
-                    },
+                    onPressed: () => createAccountPressed(),
+                      // if (_formKey.currentState!.validate()) {
+                      //   _register();
+                      // },
+                    
                     child: Text(
                       'daftar'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -185,7 +200,7 @@ class _RegisterState extends State<Register> {
                       primary: primarycolor,
                     ),
                     onPressed: () {
-                      controller.login();
+                      // controller.login();
                     },
                     icon: Icon(
                       // <-- Icon
