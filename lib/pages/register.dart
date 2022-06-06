@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_job/api/auth_services.dart';
 import 'package:go_job/controller/logincontroller.dart';
 import 'package:go_job/model/login_model.dart';
 import 'package:go_job/shared/shared.dart';
@@ -38,8 +39,19 @@ class _RegisterState extends State<Register> {
   //   );
   //   _scaffoldKey.currentState!.showSnackBar(snackBar);
   // }
-  createAccountPressed() {
-    
+  createAccountPressed() async {
+    bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(_email);
+    if(emailValid) {
+      http.Response response = await AuthServices.register(_namaPelamar, _email, _password);
+    Map responseMap = jsonDecode(response.body);
+    if (response.statusCode==200) {
+      Navigator.push(context, 
+      MaterialPageRoute(
+        builder: (BuildContext context) => const Dashboard()
+      )
+      );
+    } 
+    }
   }
 
   @override
