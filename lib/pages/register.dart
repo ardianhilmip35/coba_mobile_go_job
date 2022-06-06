@@ -10,6 +10,7 @@ import 'dart:convert';
 import 'package:go_job/pages/dashboard.dart';
 import 'package:go_job/api/api_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class Register extends StatefulWidget {
   @override
@@ -47,9 +48,8 @@ class _RegisterState extends State<Register> {
     if (response.statusCode==200) {
       Navigator.push(context, 
       MaterialPageRoute(
-        builder: (BuildContext context) => const Dashboard()
-      )
-      );
+        builder: (BuildContext context) => Login(),
+      ));
     } 
     }
   }
