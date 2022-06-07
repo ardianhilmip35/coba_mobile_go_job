@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_job/pages/profil_perusahaan.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -34,19 +35,19 @@ class _DetailLowonganState extends State<DetailLowongan> {
         padding: EdgeInsets.fromLTRB(10.0, 8.0, 8.0, 8.0),
         child: Column(
           children: [
-            TextFormField(
-              textInputAction: TextInputAction.search,
-              style: Theme.of(context).textTheme.bodyText1,
-              decoration: InputDecoration(
-                  labelText: "caripekerjaan".tr,
-                  border: OutlineInputBorder(),
-                  focusColor: Colors.grey,
-                  labelStyle:
-                      TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
-                  prefixIcon: Icon(
-                    Icons.search,
-                  )),
-            ),
+            // TextFormField(
+            //   textInputAction: TextInputAction.search,
+            //   style: Theme.of(context).textTheme.bodyText1,
+            //   decoration: InputDecoration(
+            //       labelText: "caripekerjaan".tr,
+            //       border: OutlineInputBorder(),
+            //       focusColor: Colors.grey,
+            //       labelStyle:
+            //           TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
+            //       prefixIcon: Icon(
+            //         Icons.search,
+            //       )),
+            // ),
             Container(
               padding: EdgeInsets.only(top: 15.0, bottom: 5.0),
               child: Column(
@@ -70,7 +71,11 @@ class _DetailLowonganState extends State<DetailLowongan> {
                               style:
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Route route =
+                                  MaterialPageRoute(builder: (context) => DetailLowongan());
+                              Navigator.push(context, route);
+                            },
                           ),
                         ),
                         Container(
@@ -82,7 +87,11 @@ class _DetailLowonganState extends State<DetailLowongan> {
                               style:
                                   TextStyle(fontSize: 20, color: primarycolor),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Route route =
+                                  MaterialPageRoute(builder: (context) => ProfilPerusahaan());
+                              Navigator.push(context, route);
+                            },
                           ),
                         ),
                       ],

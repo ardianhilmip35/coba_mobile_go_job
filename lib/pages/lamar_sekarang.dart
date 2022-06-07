@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_job/pages/profil.dart';
 import 'package:go_job/pages/profil_perusahaan.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -195,7 +196,10 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      if (_formKey.currentState!.validate()) {}
+                                      Route route =
+                                          MaterialPageRoute(builder: (context) => Profil());
+                                      Navigator.push(context, route);
+                                      // if (_formKey.currentState!.validate()) {}
                                     },
                                     splashColor: Colors.transparent,
                                   )),

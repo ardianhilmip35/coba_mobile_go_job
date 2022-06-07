@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       translations: LocaleString(),
       locale: Locale('id', 'ID'),
-      home: MyBottomBar(),
+      home: SplashScreen(),
     );
   }
 }

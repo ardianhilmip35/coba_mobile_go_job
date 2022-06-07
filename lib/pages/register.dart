@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:go_job/api/auth_services.dart';
 import 'package:go_job/controller/logincontroller.dart';
@@ -21,7 +23,7 @@ class _RegisterState extends State<Register> {
   String _namaPelamar = '';
   String _email = '';
   String _password= '';
-  // final controller = Get.put(LoginController());
+  final controller = Get.put(LoginController());
   // bool _isLoading = false;
   // final _formKey = GlobalKey<FormState>();
   // final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,7 +41,11 @@ class _RegisterState extends State<Register> {
   //     content: Text(msg),
   //   );
   //   _scaffoldKey.currentState!.showSnackBar(snackBar);
-  // }
+  // // }
+  final TextEditingController namaPelamar = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+
   createAccountPressed() async {
     bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(_email);
     if(emailValid) {
@@ -87,6 +93,7 @@ class _RegisterState extends State<Register> {
                   padding:
                       const EdgeInsets.only(top: 30.8, left: 8.8, right: 8.8),
                   child: TextFormField(
+                    controller: namaPelamar,
                     //untuk input email
                     decoration: new InputDecoration(
                       labelText: "nama".tr,
@@ -96,9 +103,9 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    onChanged: (value) {
-                      _namaPelamar = value;
-                    },
+                    // onChanged: (value) {
+                    //   _namaPelamar = value;
+                    // },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'namakosong'.tr;
@@ -112,6 +119,7 @@ class _RegisterState extends State<Register> {
                   padding:
                       const EdgeInsets.only(top: 25, left: 8.8, right: 8.8),
                   child: TextFormField(
+                    controller: email,
                     //untuk input email
                     decoration: new InputDecoration(
                       labelText: "Email",
@@ -119,9 +127,9 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    onChanged: (value) {
-                      _email = value;
-                    },
+                    // onChanged: (value) {
+                    //   _email = value;
+                    // },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'emailkosong'.tr;
@@ -135,6 +143,7 @@ class _RegisterState extends State<Register> {
                   padding:
                       const EdgeInsets.only(top: 25, left: 8.8, right: 8.8),
                   child: TextFormField(
+                    controller: password,
                     //untuk textfield password
                     obscureText: true,
                     decoration: new InputDecoration(
@@ -143,9 +152,9 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
                     ),
-                    onChanged: (value) {
-                      _password = value;
-                    },
+                    // onChanged: (value) {
+                    //   _password = value;
+                    // },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'sandikosong'.tr;

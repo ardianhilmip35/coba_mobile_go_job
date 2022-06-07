@@ -72,7 +72,7 @@ class LocaleString extends Translations {
           'list': 'List Pekerjaan',
           'lihat': 'Lihat Semua',
           'buka': 'Lihat',
-          'lamar': 'Lamar',
+          'lamar': 'Lamar Sekarang',
           'nama': 'Nama Lengkap',
           'namakosong': 'Nama tidak boleh kosong',
           'emailkosong': 'Email tidak boleh kosong',
