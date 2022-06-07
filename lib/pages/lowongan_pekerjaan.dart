@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_job/pages/lamar_sekarang.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "lowongan".tr,
+          "Lowongan".tr,
           style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
@@ -148,11 +149,15 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                                     textColor: Colors.white,
                                     color: primarycolor,
                                     child: Text(
-                                      "lamar".tr,
+                                      "lamarsekarang".tr,
                                       style: TextStyle(
                                           fontSize: 20, color: Colors.white),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Route route =
+                                          MaterialPageRoute(builder: (context) => LamarSekarang());
+                                      Navigator.push(context, route);
+                                    },
                                     shape: new RoundedRectangleBorder(
                                       borderRadius:
                                           new BorderRadius.circular(12.0),
