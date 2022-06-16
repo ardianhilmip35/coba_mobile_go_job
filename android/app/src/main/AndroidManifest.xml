@@ -7,7 +7,7 @@
         </intent>
   </queries>
    <application
-        android:label="go_job"
+        android:label="Go Job"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
