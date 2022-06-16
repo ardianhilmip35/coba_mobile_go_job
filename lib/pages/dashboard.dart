@@ -72,7 +72,7 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     Container(
                       color: Colors.white,
-                      margin: EdgeInsets.only(left: 10, right: 10),
+                      margin: EdgeInsets.only(left: 10, right: 10,bottom: 10),
                       padding: EdgeInsets.all(30),
                       width: double.infinity,
                       child: Column(
@@ -103,66 +103,6 @@ class _DashboardState extends State<Dashboard> {
                                   shape: StadiumBorder()),
                             )
                           ]),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            "caripekerjaan".tr,
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.black),
-                          ),
-                          Container(
-                            child: Row(
-                              children: <Widget>[
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.2,
-                                  height: 300,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 5)),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.3,
-                                  height: 300,
-                                  child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                2.3,
-                                        height: 145,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      Padding(
-                                          padding: EdgeInsets.only(top: 10)),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                2.2,
-                                        height: 145,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
                     ),
                     Container(
                       width: double.infinity,
@@ -226,44 +166,49 @@ class _DashboardState extends State<Dashboard> {
                                         width: 15,
                                       ),
                                       Container(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              "Text Job",
-                                              style: GoogleFonts.poppins(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
-                                                  color: Colors.black),
-                                            ),
-                                            Text(
-                                              "Text Job",
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: 15,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
                                         width:
                                             MediaQuery.of(context).size.width /
-                                                2.2,
-                                        alignment: Alignment.centerRight,
-                                        child: IconButton(
-                                            iconSize: 45,
-                                            color: _iconColor,
-                                            onPressed: () {
-                                              setState(() {
-                                                if (_iconColor == Colors.grey) {
-                                                  _iconColor = primarycolor;
-                                                } else {
-                                                  _iconColor = Colors.grey;
-                                                }
-                                              });
-                                            },
-                                            icon: Icon(Icons.bookmark)),
+                                                1.44,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(
+                                                  "Text Job",
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20,
+                                                      color: Colors.black),
+                                                ),
+                                                Text(
+                                                  "Text Job",
+                                                  style: GoogleFonts.poppins(
+                                                      fontSize: 15,
+                                                      color: Colors.black),
+                                                ),
+                                              ],
+                                            ),
+                                            IconButton(
+                                                iconSize: 45,
+                                                color: _iconColor,
+                                                onPressed: () {
+                                                  setState(() {
+                                                    if (_iconColor ==
+                                                        Colors.grey) {
+                                                      _iconColor = primarycolor;
+                                                    } else {
+                                                      _iconColor = Colors.grey;
+                                                    }
+                                                  });
+                                                },
+                                                icon: Icon(Icons.bookmark)),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
