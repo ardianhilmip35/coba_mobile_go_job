@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:go_job/api/auth_services.dart';
 import 'package:go_job/controller/logincontroller.dart';
@@ -20,9 +19,10 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  var confirmPass;
   String _namaPelamar = '';
   String _email = '';
-  String _password= '';
+  String _password = '';
   final controller = Get.put(LoginController());
   // bool _isLoading = false;
   // final _formKey = GlobalKey<FormState>();
@@ -47,19 +47,24 @@ class _RegisterState extends State<Register> {
   final TextEditingController password = TextEditingController();
 
   createAccountPressed() async {
-    bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(_email);
-    if(emailValid) {
-      http.Response response = await AuthServices.register(_namaPelamar, _email, _password);
-    Map responseMap = jsonDecode(response.body);
-    if (response.statusCode==200) {
-      Navigator.push(context, 
-      MaterialPageRoute(
-        builder: (BuildContext context) => Login(),
-      ));
-    } 
+    bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(_email);
+    if (emailValid) {
+      http.Response response =
+          await AuthServices.register(_namaPelamar, _email, _password);
+      Map responseMap = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => Login(),
+            ));
+      }
     }
   }
 
+  bool _isObscure = true;
   @override
   // double nilaiSlider = 1;
   Widget build(BuildContext context) {
@@ -145,17 +150,29 @@ class _RegisterState extends State<Register> {
                   child: TextFormField(
                     controller: password,
                     //untuk textfield password
-                    obscureText: true,
+                    obscureText: _isObscure,
                     decoration: new InputDecoration(
                       labelText: "sandi".tr,
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                      ),
                     ),
+
                     // onChanged: (value) {
                     //   _password = value;
                     // },
                     validator: (value) {
+                      confirmPass = value;
                       if (value!.isEmpty) {
                         return 'sandikosong'.tr;
                       }
@@ -169,16 +186,29 @@ class _RegisterState extends State<Register> {
                       const EdgeInsets.only(top: 25, left: 8.8, right: 8.8),
                   child: TextFormField(
                     //untuk textfield password
-                    obscureText: true,
-                    decoration: new InputDecoration(
+                    obscureText: _isObscure,
+                    decoration: InputDecoration(
                       labelText: "konfirsandi".tr,
                       icon: Icon(Icons.security),
                       border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(0)),
+                          borderRadius: BorderRadius.circular(0)),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                      ),
                     ),
+
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "konfirkosong".tr;
+                      } else if (value != confirmPass) {
+                        return "passwordbeda".tr;
                       }
                       return null;
                     },
@@ -194,10 +224,10 @@ class _RegisterState extends State<Register> {
                       primary: primarycolor,
                     ),
                     onPressed: () => createAccountPressed(),
-                      // if (_formKey.currentState!.validate()) {
-                      //   _register();
-                      // },
-                    
+                    // if (_formKey.currentState!.validate()) {
+                    //   _register();
+                    // },
+
                     child: Text(
                       'daftar'.tr,
                       style: TextStyle(fontWeight: FontWeight.bold),

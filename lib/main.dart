@@ -5,6 +5,7 @@ import 'package:go_job/pages/detail_lowongan.dart';
 import 'package:go_job/pages/editprofil.dart';
 import 'package:go_job/pages/lamar_sekarang.dart';
 import 'package:go_job/pages/lowongan_pekerjaan.dart';
+import 'package:go_job/pages/password.dart';
 import 'package:go_job/pages/pengalaman.dart';
 import 'package:go_job/pages/profil.dart';
 import 'package:go_job/pages/profil_perusahaan.dart';

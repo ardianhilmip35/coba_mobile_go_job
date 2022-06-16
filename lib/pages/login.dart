@@ -84,13 +84,11 @@ class _LoginState extends State<Login> {
 //     super.initState();
 //     requestModel = new LoginRequestModel();
 //   }
-String _email = '';
-String _password = '';
+  String _email = '';
+  String _password = '';
 
-loginPressed() {
-  
-}
-
+  loginPressed() {}
+  bool _isObscure = true;
   @override
   // double nilaiSlider = 1;
   Widget build(BuildContext context) {
@@ -154,12 +152,22 @@ loginPressed() {
                     //untuk textfield password
                     // controller: _passwordController,
                     // onSaved: (value) => requestModel.password = value,
-                    obscureText: true,
+                    obscureText: _isObscure,
                     decoration: new InputDecoration(
                       labelText: "sandi".tr,
                       icon: Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(0)),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                      ),
                     ),
                     onChanged: (value) {
                       _password = value;
@@ -187,12 +195,12 @@ loginPressed() {
                       primary: primarycolor,
                     ),
                     onPressed: () => loginPressed(),
-                      // if (_formKey.currentState!.validate()) {
-                      //   _login();
-                      // }
-                      // if(_formKey.currentState.validate()) {
-                      //   _login();
-                      // }
+                    // if (_formKey.currentState!.validate()) {
+                    //   _login();
+                    // }
+                    // if(_formKey.currentState.validate()) {
+                    //   _login();
+                    // }
                     // },
                     // setState(() {
                     //   visible = true;
@@ -200,7 +208,6 @@ loginPressed() {
                     // signIn(emailController.text, passwordController.text);
 
                     // },
-                    
                   ),
                 ),
                 Padding(

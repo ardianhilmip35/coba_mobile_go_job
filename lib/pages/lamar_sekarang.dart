@@ -1,18 +1,27 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_job/pages/profil.dart';
 import 'package:go_job/pages/profil_perusahaan.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:file_picker/file_picker.dart';
 
 class LamarSekarang extends StatefulWidget {
-  const LamarSekarang({Key? key}) : super(key: key);
-
   @override
   State<LamarSekarang> createState() => _LamarSekarangState();
 }
 
 class _LamarSekarangState extends State<LamarSekarang> {
+  String? _fileName;
+  List<PlatformFile>? _paths;
+  String? _directoryPath;
+  String? _extension;
+  bool _loadingPath = false;
+  bool _multiPick = false;
+  TextEditingController _controller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   double nilaiSlider = 1;
   @override
@@ -108,8 +117,9 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                               Icon(Icons.navigate_next)
                                             ]),
                                         onPressed: () {
-                                          Route route =
-                                              MaterialPageRoute(builder: (context) => ProfilPerusahaan());
+                                          Route route = MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ProfilPerusahaan());
                                           Navigator.push(context, route);
                                           // if (_formKey.currentState!
                                           //     .validate()) {}
@@ -196,8 +206,8 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      Route route =
-                                          MaterialPageRoute(builder: (context) => Profil());
+                                      Route route = MaterialPageRoute(
+                                          builder: (context) => Profil());
                                       Navigator.push(context, route);
                                       // if (_formKey.currentState!.validate()) {}
                                     },
@@ -253,7 +263,7 @@ class _LamarSekarangState extends State<LamarSekarang> {
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(5),
-                      height: 60,
+                       constraints: BoxConstraints(maxHeight: double.infinity),
                       width: double.infinity,
                       decoration: BoxDecoration(
                           color: Color.fromARGB(255, 219, 217, 217)),
@@ -297,17 +307,77 @@ class _LamarSekarangState extends State<LamarSekarang> {
                                               .drive_folder_upload_outlined),
                                           SizedBox(width: 12),
                                         ]),
-                                    onPressed: () {
-                                      if (_formKey.currentState!.validate()) {}
-                                    },
+                                    onPressed: () => _openFileExplorer(),
                                     splashColor: Colors.transparent,
                                   )),
                             ],
                           ),
+                          Padding(padding: EdgeInsets.only(bottom: 10)),
+                          Builder(
+                            builder: (BuildContext context) => _loadingPath
+                                ? Padding(
+                                    padding:
+                                        const EdgeInsets.only(top: 10),
+                                    child: const CircularProgressIndicator(),
+                                  )
+                                : _directoryPath != null
+                                    ? ListTile(
+                                        title: const Text('Directory path'),
+                                        subtitle: Text(_directoryPath!),
+                                      )
+                                    : _paths != null
+                                        ? Container(
+                                            padding: const EdgeInsets.only(
+                                                bottom: 10.0),
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.10,
+                                            child: Scrollbar(
+                                                child: ListView.separated(
+                                              itemCount: _paths != null &&
+                                                      _paths!.isNotEmpty
+                                                  ? _paths!.length
+                                                  : 1,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                final bool isMultiPath =
+                                                    _paths != null &&
+                                                        _paths!.isNotEmpty;
+                                                final String name =
+                                                    'File $index: ' +
+                                                        (isMultiPath
+                                                            ? _paths!
+                                                                .map((e) =>
+                                                                    e.name)
+                                                                .toList()[index]
+                                                            : _fileName ??
+                                                                '...');
+                                                final path = _paths!
+                                                    .map((e) => e.path)
+                                                    .toList()[index]
+                                                    .toString();
+
+                                                return ListTile(
+                                                  title: Text(
+                                                    name,
+                                                  ),
+                                                  subtitle: Text(path),
+                                                );
+                                              },
+                                              separatorBuilder:
+                                                  (BuildContext context,
+                                                          int index) =>
+                                                      const Divider(),
+                                            )),
+                                          )
+                                        : const SizedBox(),
+                          ),
                         ],
                       ),
                     ),
-                    Padding(padding: EdgeInsets.only(top: 17)),
+                    Padding(padding: EdgeInsets.only(top: 10)),
                     MaterialButton(
                       height: 40.0,
                       minWidth: 100.0,
@@ -332,5 +402,28 @@ class _LamarSekarangState extends State<LamarSekarang> {
         ),
       ),
     );
+  }
+
+  void _openFileExplorer() async {
+    setState(() => _loadingPath = true);
+    try {
+      _directoryPath = null;
+      _paths = (await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf'],
+      ))
+          ?.files;
+    } on PlatformException catch (e) {
+      print("Unsupported operation" + e.toString());
+    } catch (ex) {
+      print(ex);
+    }
+    if (!mounted) return;
+    setState(() {
+      _loadingPath = false;
+      print(_paths!.first.extension);
+      _fileName =
+          _paths != null ? _paths!.map((e) => e.name).toString() : '...';
+    });
   }
 }

@@ -40,7 +40,7 @@ class _EditProfilState extends State<EditProfil> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "Nama",
+                "nama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -50,7 +50,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Alamat",
+                "alamat".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -60,7 +60,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Agama",
+                "agama".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -70,7 +70,7 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "No. HP",
+                "nohp".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
@@ -90,13 +90,23 @@ class _EditProfilState extends State<EditProfil> {
                 ),
               ),
               Text(
-                "Tanggal Lahir",
+                "tanggallahir".tr,
                 style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
               ),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "01/01/2020",
+                ),
+              ),
+               Text(
+                "jeniskelamin".tr,
+                style: GoogleFonts.poppins(color: Colors.black, fontSize: 20),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "laki-laki",
                 ),
               ),
               Padding(padding: EdgeInsets.only(bottom: 10)),
@@ -125,7 +135,9 @@ class _EditProfilState extends State<EditProfil> {
                         "batal".tr,
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(5.0),
                       ),

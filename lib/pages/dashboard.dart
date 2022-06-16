@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_job/controller/logincontroller.dart';
+import 'package:go_job/pages/lowongan_pekerjaan.dart';
 import 'package:go_job/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -72,7 +73,7 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     Container(
                       color: Colors.white,
-                      margin: EdgeInsets.only(left: 10, right: 10,bottom: 10),
+                      margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
                       padding: EdgeInsets.all(30),
                       width: double.infinity,
                       child: Column(
@@ -108,25 +109,34 @@ class _DashboardState extends State<Dashboard> {
                       width: double.infinity,
                       padding: EdgeInsets.all(10),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2.2,
-                            child: Text(
-                              "list".tr,
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.black),
-                            ),
+                          Text(
+                            "list".tr,
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.black),
                           ),
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2.2,
-                            child: Text(
-                              "lihat".tr,
-                              textAlign: TextAlign.end,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15, color: Colors.grey),
-                            ),
+                          RichText(
+                            text: TextSpan(children: [
+                              WidgetSpan(
+                                  child: GestureDetector(
+                                child: Text(
+                                  'lihat'.tr,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 15, color: Colors.grey),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            LowonganPekerjaan()),
+                                  );
+                                },
+                              ))
+                            ]),
                           ),
                         ],
                       ),
@@ -136,7 +146,7 @@ class _DashboardState extends State<Dashboard> {
                         Container(
                           width: double.infinity,
                           margin: EdgeInsets.only(left: 10, right: 10),
-                          padding: EdgeInsets.only(left: 10, right: 10, top: 5),
+                          padding: EdgeInsets.only(left: 10, right: 10, top: 5,),
                           height: 120,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -240,6 +250,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                         ),
+                        Padding(padding: EdgeInsets.only(bottom: 10)),
                       ],
                     )
                   ],

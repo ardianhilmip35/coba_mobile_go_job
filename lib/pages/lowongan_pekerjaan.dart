@@ -174,7 +174,7 @@ class _LowonganPekerjaanState extends State<LowonganPekerjaan> {
                 ],
               ),
             ),
-          
+          Padding(padding: EdgeInsets.only(bottom: 10))
           ],
         ),
       ),
